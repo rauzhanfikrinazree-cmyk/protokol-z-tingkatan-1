@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#190f16"><title>PROTOKOL Z — OPERASI FAJAR | Matematik Tingkatan 1</title>
+<style>
+:root{--bg:#100c08;--panel:#22170f;--panel2:#2f2116;--edge:#8a6a42;--text:#f8f0df;--muted:#cfbea2;--mint:#9fe0c6;--gold:#f4cb77;--pink:#f2968d;--violet:#c8b0f7;--blue:#9bc7ff}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:radial-gradient(circle at 20% -15%,#4a3120,#16100b 58%);font:13px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;filter:grayscale(.7);opacity:.48}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}[hidden]{display:none!important}.pix{font-family:Consolas,"Courier New",monospace;font-weight:900;letter-spacing:.02em}.micro{font-size:10px;color:var(--muted)}.muted{color:var(--muted)}.gold{color:var(--gold)}.mint{color:var(--mint)}.violet{color:var(--violet)}.btn{border:2px solid #526b8e;border-bottom-width:4px;background:#27395b;color:var(--text);font-weight:800;padding:8px 10px;border-radius:4px;min-height:37px}.btn:hover:not(:disabled){filter:brightness(1.13)}.btn:active:not(:disabled){transform:translateY(1px)}.btn.main{background:#b2f4c7;color:#17243d;border-color:#d8ffe6 #6cac8c #47785c #ccffe0}.btn.goldbtn{background:var(--gold);color:#2b2032;border-color:#ffefb6 #b99242 #96702d #fff0b3}.btn.ghost{background:#121e39}.btn.small{font-size:11px;min-height:30px;padding:5px 7px;border-bottom-width:2px}.app{max-width:1500px;width:calc(100% - 20px);height:100dvh;margin:auto;padding:8px 0;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:7px}.top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}.brand{display:flex;align-items:center;gap:10px;flex:0 0 auto;min-width:0}.emblem{width:43px;height:43px;display:grid;place-items:center;background:#ebbc6c;color:#1d2a3c;border:3px solid #ffe7a8;font:900 23px Consolas;box-shadow:3px 3px 0 #544333}.brand h1{font-size:20px;line-height:1;white-space:nowrap;margin:0}.brand p{margin:4px 0 0;font-size:9px;letter-spacing:.09em;color:#92b5db}.topstats{display:flex;align-items:stretch;gap:6px;flex:1;min-width:0;justify-content:flex-end}.stat{min-width:0;border:1px solid #425777;background:#141f3b;padding:5px 9px;display:flex;flex-direction:column;justify-content:center;min-width:70px}.stat b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stat span{font-size:9px;color:#9eafc8}.topactions{display:flex;gap:5px;flex-shrink:0}.worlds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.world{background:#111d37;border:2px solid #435775;padding:6px 10px;min-height:48px;display:flex;align-items:center;gap:9px;min-width:0}.world.active{border-color:#adf2ca;background:#1e3d3e}.world.complete{border-color:#ab9565}.world.locked{opacity:.56}.world-icon{font-size:25px}.world-name{font-size:11px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.world-sub{color:#9aabca;font-size:9px}.world-state{margin-left:auto;font:900 9px Consolas;color:var(--gold);white-space:nowrap}.main-grid{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:8px}.card{background:#141e38;border:2px solid var(--edge);min-height:0;overflow:hidden}.arena{display:flex;flex-direction:column;min-height:0}.arena-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;min-height:43px;border-bottom:1px solid #344c6f}.arena-head h2{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.arena-head p{font-size:10px;color:#a7b9d1;margin:1px 0}.chapter-pill{font-size:10px;border:1px solid #577c80;background:#173a3d;color:#b5f9e3;padding:6px;white-space:nowrap}.stage{background:#090d1f;min-height:0;flex:1 1 0;display:flex;justify-content:center;align-items:center;position:relative;overflow:hidden}.stage canvas{display:block;height:100%;width:auto;max-width:100%;max-height:100%;aspect-ratio:16/9;image-rendering:pixelated}.scene-top{position:absolute;top:8px;left:9px;z-index:1;background:#091529d9;border:1px solid #536c90;padding:5px 7px;font-size:10px;color:#dbf5ff;pointer-events:none}.scene-bottom{position:absolute;bottom:7px;right:8px;font-size:10px;color:#ccdaf3;background:#0b1939e3;padding:4px 6px;border:1px solid #3d5d89;pointer-events:none}.fighters{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:2px solid #3c5170;padding:8px 9px;background:#101a32;flex:0 0 auto}.fighter-head{display:flex;justify-content:space-between;align-items:center;gap:7px;font-size:11px;font-weight:900;white-space:nowrap}.fighter-head span:last-child{font-size:10px;color:#c3d6e7}.meter{height:11px;background:#070f21;border:2px solid #39506f;margin:5px 0;overflow:hidden}.fill{height:100%;background:repeating-linear-gradient(90deg,#7debaf 0 13px,#59bd89 13px 16px);transition:width .25s}.fill.hp{background:repeating-linear-gradient(90deg,#ff8199 0 13px,#e35d79 13px 16px)}.fill.mp{background:linear-gradient(90deg,#7ccaf6,#afa4ff)}.submeter{height:5px;margin:1px 0 0}.battle-log{padding:5px 11px;min-height:32px;max-height:36px;background:#132343;border-top:1px solid #304f76;display:flex;align-items:center;gap:8px;font-size:11px;color:#d3e3ff;overflow:hidden}.battle-log .spark{color:var(--gold);font-size:14px}.battle-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:7px;border-top:2px solid #354b70;background:#15213d;flex:0 0 auto}.battle-actions .btn{min-height:48px;padding:5px 3px;font-size:12px;line-height:1.2}.battle-actions .btn small{font-size:9px;display:block;opacity:.8}.battle-actions .btn.magic{background:#443866;border-color:#8878bd}.battle-actions .btn.defense{background:#254d52;border-color:#629ea4}.battle-actions .btn.potion{background:#5e3b4b;border-color:#ba7992}.sidebar{display:flex;flex-direction:column;gap:7px;min-height:0}.side-head{display:flex;justify-content:space-between;align-items:center;gap:6px}.side-title{font-size:13px;margin:0;color:#eaf4ff}.sidebox{padding:11px 12px;flex:0 0 auto}.quest-map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:8px}.quest{background:#182842;border:1px solid #465c7d;aspect-ratio:1/1;display:grid;place-items:center;font:900 11px Consolas;color:#728aa8;position:relative}.quest.now{background:#2b4843;border-color:#91e4b5;color:#ccffe5}.quest.done{background:#4a3e29;border-color:#f4cf84;color:#ffe6ae}.quest.boss:after{content:'♛';position:absolute;bottom:-2px;right:2px;font-size:9px;color:#ffb8a4}.quest-caption{font-size:10px;color:var(--muted);margin:8px 0 0}.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:9px}.resource{background:#0c1730;border:1px solid #334d70;padding:7px 8px}.resource strong{display:block;color:#fcd897;font-size:15px}.resource span{font-size:9px;color:#acbad5}.side-note{font-size:11px;color:#abc1dc;line-height:1.45;margin:8px 0}.sidebtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}.sidebtns .btn{font-size:11px}.sidebar .legend{padding:9px 11px;background:#0f1b34;border:1px solid #395477;color:#c2cee2;font-size:10px;line-height:1.45}.toast{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);border:2px solid #95eac1;box-shadow:4px 4px 0 #07121c;background:#142f30;color:#e2ffee;font-weight:750;padding:8px 12px;max-width:95%;z-index:90;text-align:center}.overlay{position:fixed;inset:0;z-index:30;background:#040918ee;display:grid;place-items:center;padding:9px;overflow:hidden}.overlay:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#ffffff04 0 1px,transparent 1px 5px);pointer-events:none}.dialog{position:relative;background:#17233f;border:3px solid #6b84ac;box-shadow:8px 8px 0 #060b1b;width:min(610px,100%);max-height:calc(100dvh - 18px);overflow:auto;overscroll-behavior:contain;padding:clamp(13px,2.5vh,24px)}.dialog h2{margin:4px 0 8px;font-size:clamp(20px,4vw,29px)}.dialog h3{margin:6px 0;font-size:15px}.eyebrow{font:900 10px Consolas;color:#9af2d9;letter-spacing:.13em}.dialog p{line-height:1.5;font-size:12px;color:#c8d6ed}.dialog-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;margin-top:11px}.dialog-actions .btn{flex:1}.hero-heading{font-size:clamp(34px,6vw,51px)!important;line-height:1.1!important;color:#ffdd9a;text-shadow:3px 3px 0 #59466e}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.formrow label{font-size:10px;font-weight:900;color:#a0e9e5}.formrow input,.formrow select,.answer-input{display:block;background:#0a1530;color:#f6faff;border:2px solid #59749b;padding:8px 10px;width:100%;min-height:40px;margin-top:5px}.class-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0}.class-card{background:#101d37;border:2px solid #475d80;color:#e6ecff;padding:8px 5px;text-align:center;min-height:83px;font-size:10px}.class-card strong{display:block;font-size:12px;margin:2px 0}.class-card .figure{font-size:26px;display:block}.class-card.selected{background:#23423f;border-color:#98ebc4}.tipbox{background:#0d2538;border-left:3px solid #78cdda;padding:9px 10px;font-size:11px;color:#bddfe8;margin-top:10px;line-height:1.4}.problem{padding:15px 16px;background:linear-gradient(180deg,#f6ecd2 0%,#ead9b3 100%);border:3px solid #be9551;box-shadow:inset 0 0 0 2px #fff6e2,0 4px 14px #00000033;margin:10px 0}.problem .topic{font-size:clamp(16px,2.2vw,19px);color:#22343a;font-weight:800;line-height:1.6}.problem .equation{font-size:clamp(32px,5vw,46px);color:#5a3810;font-weight:900;line-height:1.28;margin-top:14px;text-shadow:0 1px 0 #fff4cf}.hint{padding:9px;background:#213a3b;border-left:3px solid #a6e8bb;color:#e0ffe9;font-size:12px;margin:8px 0}.feedback{min-height:22px;color:#ffb0bc;font-size:11px;margin:7px 0}.questline{font-size:11px;color:#a6dadd;margin-bottom:8px}.shop-items{display:grid;gap:7px}.shop-item{display:flex;align-items:center;gap:9px;background:#111d35;border:1px solid #425a7b;padding:9px}.shop-item b{display:block;font-size:12px}.shop-item span{font-size:10px;color:#a2b6d4}.shop-item .btn{margin-left:auto;white-space:nowrap;flex-shrink:0}.win-stars{text-align:center;color:#fbd38e;font-size:36px;letter-spacing:.2em;margin:4px}.results{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:11px 0}.results>div{background:#0c1b33;border:1px solid #405878;padding:8px 4px;text-align:center}.results strong{display:block;font-size:18px;color:#ffdf99}.results span{font-size:9px;color:#b6c7dd}.pdpr{border:2px solid #b79e64;padding:9px;margin-top:10px;background:#29263a}.pdpr b{color:#ffe2aa}.pdpr p{margin:4px 0;color:#f0e9db}.pdpr-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.linkbtn{display:grid;place-items:center;text-decoration:none;text-align:center;line-height:1.25}.mobile-tools{display:none}
+@media(max-width:1000px){.main-grid{grid-template-columns:minmax(0,1fr) 220px}.sidebar .legend{display:none}.quest-map{grid-template-columns:repeat(5,1fr)}.brand h1{font-size:17px}.stat{min-width:58px;padding:4px 6px}.stat b{font-size:12px}}
+@media(max-width:750px){.app{width:calc(100% - 10px);padding:5px 0;gap:5px}.emblem{width:34px;height:34px;font-size:16px}.brand h1{font-size:14px}.brand p{font-size:8px}.top{gap:4px}.stat{min-width:0;padding:2px 4px}.stat span{font-size:8px}.stat b{font-size:11px}.topstats .stat{display:none!important}.topstats .stat:nth-child(3){display:flex!important;max-width:66px}.topstats{flex:1;justify-content:flex-end}.topactions{gap:3px}.topactions .btn{font-size:9px;min-height:31px;padding:3px 5px}.world{min-height:38px;padding:3px 5px;gap:4px}.world-icon{font-size:18px}.world-name{font-size:9px}.world-sub{font-size:8px}.world-state{display:none}.main-grid{display:block}.sidebar{display:none}.arena{height:100%}.arena-head{min-height:37px;padding:4px 7px}.arena-head h2{font-size:12px}.arena-head p{font-size:9px}.chapter-pill{font-size:9px}.scene-top,.scene-bottom{font-size:9px;padding:3px 5px}.fighters{padding:5px 7px;gap:7px}.fighter-head{font-size:10px}.fighter-head span:last-child{font-size:9px}.meter{height:10px;margin:3px 0}.battle-log{font-size:10px;padding:4px 7px;min-height:27px;max-height:30px}.battle-actions{grid-template-columns:repeat(4,1fr);padding:5px;gap:4px}.battle-actions .btn{min-height:45px;padding:4px 1px;font-size:10px}.battle-actions .btn small{font-size:8px}.mobile-tools{display:flex;gap:3px;position:absolute;top:5px;right:6px;z-index:4}.mobile-tools .btn{font-size:9px;min-height:27px;padding:4px 6px}.formrow{grid-template-columns:1fr}.dialog{padding:13px}.results>div strong{font-size:15px}.pdpr-actions{grid-template-columns:1fr}}
+@media(max-height:650px){.world{min-height:31px;padding:2px 5px}.arena-head{min-height:32px}.fighters{padding:3px 6px}.meter{height:8px;margin:2px 0}.battle-actions .btn{min-height:37px}.battle-log{min-height:23px;max-height:25px}.dialog{padding:10px}.class-card{min-height:65px;padding:4px}.class-card .figure{font-size:18px}.dialog h2{margin:3px 0;font-size:20px}.pdpr p{font-size:10px}.results{margin:6px 0}}
+@media(max-width:350px){.brand p{display:none}.emblem{display:none}.brand h1{font-size:12px}.topactions .btn{font-size:8px}.world-name{font-size:8px}.world-sub{font-size:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Lapisan asas legasi — ditindih oleh tema Protokol Z */
+:root{--bg:#120d14;--panel:#231b23;--panel2:#36222b;--edge:#9f763e;--text:#f6e8c8;--muted:#c7b196;--mint:#99d5b1;--gold:#e6bc65;--pink:#ef9792;--violet:#d1b2f2;--blue:#8fbab5}
+body{background:radial-gradient(ellipse at 50% -30%,#51292c 0%,transparent 62%),linear-gradient(145deg,#100e15,#22141a 56%,#0d1616);color:#f3e2c4;font-family:Georgia,'Palatino Linotype',serif}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:repeating-linear-gradient(45deg,transparent 0 45px,#d0ad6933 46px 47px,transparent 48px 90px);z-index:-1}
+.pix{font-family:Georgia,'Times New Roman',serif;font-weight:800;letter-spacing:.035em}.micro{color:#bcac9a}
+.gold{color:#edc674}.mint{color:#a9dcb2}.muted{color:#c9b69d}
+.app{max-width:1490px;width:calc(100% - 28px);gap:9px;padding:10px 0;grid-template-rows:auto auto minmax(0,1fr)}
+.top{border:2px solid #8a633c;background:linear-gradient(92deg,#351b28 0%,#281b23 58%,#201b23 100%);box-shadow:inset 0 0 0 3px #281922,0 5px 0 #0d0c13;padding:7px 10px;min-height:72px;position:relative}
+.top:after{content:'✦';position:absolute;right:7px;bottom:-10px;color:#d9b16d;font-size:17px}
+.emblem{background:radial-gradient(circle,#55332c,#29171c 75%);border:2px solid #deb769;border-radius:50%;box-shadow:0 0 0 4px #2c1a21,0 0 0 5px #886541,0 0 20px #c8754836;height:48px;width:48px;font-size:26px}
+.emblem span{filter:sepia(.25)}.brand{gap:15px}.brand h1{font-size:23px;letter-spacing:.04em;text-shadow:1px 2px #10090e}.brand p{letter-spacing:.17em;font-size:9px;color:#d7a976;margin:5px 0 0}.kicker{font:700 8px system-ui,sans-serif;letter-spacing:.2em;color:#bba48a;margin-bottom:4px}
+.stat{background:linear-gradient(180deg,#321f25,#211c23);border:1px solid #71513b;border-radius:3px;padding:7px 10px}.stat span{color:#c5ac83;text-transform:uppercase;letter-spacing:.09em;font:700 9px system-ui,sans-serif}.stat b{font-family:Georgia,serif;color:#f8e5bd;font-size:14px}
+.btn{border:1px solid #ac8654;border-bottom:3px solid #6f492a;border-radius:3px;box-shadow:inset 0 1px 0 #efcb8944;background:linear-gradient(180deg,#49322b,#302327);color:#fae7c4;font:700 12px system-ui,sans-serif;letter-spacing:.025em;transition:filter .12s,transform .12s,box-shadow .12s}.btn:hover:not(:disabled){filter:brightness(1.16);box-shadow:inset 0 1px 0 #eec98555,0 0 13px #c49b4244}.btn:active:not(:disabled){transform:translateY(2px)}.btn.ghost{background:linear-gradient(180deg,#3f3330,#262126);color:#edd5a7}.btn.main{background:linear-gradient(180deg,#2f6955,#204838);border-color:#76a788;border-bottom-color:#17342b;color:#f4efdc}.btn.goldbtn{background:linear-gradient(180deg,#ead38e,#ba8942);border-color:#f3d899;border-bottom-color:#855d30;color:#291a1c}
+.worlds{gap:8px}.world{position:relative;min-height:70px;overflow:hidden;background:linear-gradient(112deg,#362329,#261d29);border:1px solid #81613c;border-bottom:3px solid #725335;padding:7px 12px;box-shadow:inset 0 0 0 2px #292025}.world:before{content:'';position:absolute;width:110px;height:110px;right:-35px;top:-53px;border:1px solid #d3a96a40;border-radius:50%}.world.active{background:linear-gradient(115deg,#274838,#19362c);border-color:#d2b174;box-shadow:0 0 0 1px #b9965799,inset 0 0 25px #79b0891a}.world.complete{background:linear-gradient(115deg,#514029,#322f28);border-color:#bfa166}.world.locked{opacity:.7}.world-icon{font-size:25px;width:38px;height:38px;display:grid;place-items:center;background:#0d13135c;border-radius:50%;border:1px solid #bfa07277}.world-name{font:800 15px Georgia,serif;letter-spacing:.045em;color:#f7e5ba}.world-sub{font:700 10px system-ui,sans-serif;letter-spacing:.04em;color:#d0bfa8;margin-top:3px}.world-state{font:800 9px system-ui,sans-serif;letter-spacing:.07em;color:#e7c77f;background:#24192395;border:1px solid #896b48;padding:5px 7px}
+.main-grid{grid-template-columns:274px minmax(0,1fr);gap:10px}.sidebar{grid-column:1;grid-row:1;min-height:0}.arena{grid-column:2;grid-row:1;position:relative}.card{border:2px solid #8e6d42;background:#2a1c21;box-shadow:inset 0 0 0 3px #271b1c}.arena{border:3px solid #a8814c;box-shadow:inset 0 0 0 3px #3a261d,0 8px 20px #06080c66}.arena-head{background:linear-gradient(90deg,#44282c,#2b212b);border-bottom:2px solid #a17d51;padding:10px 15px;min-height:59px}.arena-head h2{font-size:20px;color:#f6db9a;letter-spacing:.025em}.arena-head p{color:#d8b99d;font:500 11px system-ui,sans-serif;margin-top:5px}.chapter-pill{color:#f5dc9a;border:1px solid #ba9360;background:#211720;padding:6px 9px;font:800 10px system-ui,sans-serif;letter-spacing:.05em}.stage{background:#151522;box-shadow:inset 0 0 0 4px #1d141c}.stage:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 35px 12px #07050b9c}.scene-top,.scene-bottom{background:#231820df;border:1px solid #ad8850;color:#f6deb1;letter-spacing:.05em;font:800 9px system-ui,sans-serif;padding:6px 8px;z-index:2}
+.fighters{background:linear-gradient(180deg,#302027,#241d24);border-top:2px solid #87613f;gap:12px;padding:10px 13px}.fighter-head{color:#f6dbaf;font:800 12px Georgia,serif}.fighter-head span:last-child{font:800 10px system-ui,sans-serif;color:#dfc5ad}.meter{background:#120e15;border:1px solid #947449;border-radius:1px;height:12px;margin:5px 0}.fill{background:linear-gradient(90deg,#3c9864,#a6d787)}.fill.hp{background:linear-gradient(90deg,#872d42,#db745c)}.fill.mp{background:linear-gradient(90deg,#644dba,#b1a3e1)}.submeter{height:7px}
+.battle-log{background:#1d191f;border-top:1px solid #745638;color:#e9d7b6;min-height:38px;max-height:38px;font:500 11px system-ui,sans-serif;padding:8px 13px}.battle-log .spark{color:#e1ba6a}.battle-actions{background:linear-gradient(180deg,#2f2228,#231922);border-top:1px solid #715033;gap:8px;padding:9px}.battle-actions .btn{min-height:56px;font:800 13px Georgia,serif;background:linear-gradient(180deg,#7a3035,#4e2229);border-color:#a86055;color:#fff0ce}.battle-actions .btn.main{background:linear-gradient(180deg,#85452f,#592c29);border-color:#c88656;color:#f7e4bf}.battle-actions .btn.magic{background:linear-gradient(180deg,#634672,#3e2a55);border-color:#9b77b6;color:#f3e4ff}.battle-actions .btn.defense{background:linear-gradient(180deg,#38654c,#26432f);border-color:#64956e;color:#ddf6de}.battle-actions .btn.potion{background:linear-gradient(180deg,#763840,#50232b);border-color:#bc737b;color:#ffe0df}.battle-actions .btn small{font:500 9px system-ui,sans-serif;letter-spacing:0;opacity:.85;margin-top:5px}
+.sidebar{gap:9px}.sidebox{background:linear-gradient(155deg,#e5d0a1,#bd9c6c);border:2px solid #644426;box-shadow:inset 0 0 0 3px #dec18c,0 3px 0 #170e13;padding:12px 13px;color:#2e211c;position:relative}.sidebox:before{content:'✥';position:absolute;right:8px;top:2px;color:#7f542a;font-size:19px;opacity:.52}.side-title{color:#492b25;font:800 15px Georgia,serif}.sidebox .micro{color:#704b2b}.sidebox .gold{color:#743b24}.quest{background:#eedab1;border:1px solid #a17b4c;color:#947f5a;box-shadow:inset 0 0 0 1px #fff0cb;font-family:Georgia,serif}.quest.now{background:#366550;border:2px solid #264936;color:#fff2cc;box-shadow:0 0 0 2px #bd9553}.quest.done{background:#88522e;border-color:#5e3727;color:#fff0c7}.quest.boss:after{color:#8e2a29}.quest-caption{color:#644938;font:500 10px system-ui,sans-serif}.resource{background:#ddc08b;border:1px solid #a47c4c;box-shadow:inset 0 0 0 1px #f7e4b9;color:#3b251b}.resource strong{color:#663c27;font:800 18px Georgia,serif}.resource span{color:#69523c;font:700 9px system-ui,sans-serif}.side-note{color:#5d483b;font:500 11px/1.55 system-ui,sans-serif}.sidebox .btn.ghost{background:linear-gradient(#6c4b37,#3c302c);color:#ffefca}.sidebar .legend{background:linear-gradient(155deg,#201d22,#32212b);border:1px solid #8c6545;color:#dbc5ab;font:500 11px/1.5 system-ui,sans-serif;padding:12px}.sidebar .legend b{color:#e1bd77}
+.overlay{background:radial-gradient(ellipse at center,#20151fcf,#09090ff5);backdrop-filter:blur(3px)}.overlay:before{background:repeating-linear-gradient(135deg,#d3a56b06 0 2px,transparent 2px 8px)}.dialog{background:linear-gradient(155deg,#f2e1b8 0%,#dfc594 50%,#c4a16f 100%);border:4px solid #805833;box-shadow:0 0 0 3px #c9a66e,0 0 0 6px #302029,10px 13px 32px #000a;color:#31221f;max-width:650px;padding:clamp(14px,2vh,25px);border-radius:2px}.dialog:before{content:'❧';position:absolute;right:9px;top:-4px;color:#8f6237;opacity:.42;font-size:28px;pointer-events:none}.dialog h2{font:800 clamp(23px,4vw,34px) Georgia,serif;color:#642f31;line-height:1.08;margin:6px 0 12px}.eyebrow{font:800 10px system-ui,sans-serif;letter-spacing:.19em;color:#815334}.dialog p{color:#49352a;font:500 12px/1.52 system-ui,sans-serif}.hero-heading{font:800 clamp(39px,6vw,60px) Georgia,serif!important;line-height:.97!important;letter-spacing:.045em!important;color:#532e32!important;text-shadow:1px 2px #f9e8bd!important;text-align:center;margin:9px 0!important}.hero-heading span{color:#963c36;display:inline-block;margin-top:6px}.start-sigil{font-size:23px;letter-spacing:.2em;text-align:center;color:#7e4f30;margin:1px 0 3px}.subtitle-story{text-align:center;letter-spacing:.2em;font:800 11px system-ui,sans-serif;color:#754733;margin:5px 0 13px}.story-intro{text-align:center!important;max-width:550px;margin:8px auto 10px!important}.quest-tally{display:flex;justify-content:center;gap:7px;margin:7px 0 12px}.quest-tally span{background:#e3c999;border:1px solid #af844b;padding:5px 9px;color:#694027;font:800 10px system-ui,sans-serif;letter-spacing:.035em}.dialog .eyebrow{text-align:center}.dialog .btn{min-height:39px}.dialog .tipbox,.tipbox{background:#e0c08a;color:#533528;border-left:4px solid #874f3c;font:500 11px/1.55 system-ui,sans-serif;padding:10px 11px}.formrow label{color:#5e3d2a;font:800 10px system-ui,sans-serif;letter-spacing:.08em}.formrow input,.formrow select,.answer-input{background:#fff3d6;color:#382624;border:1px solid #936943;border-bottom:3px solid #8f6948;border-radius:2px}.class-card{background:linear-gradient(180deg,#efddb6,#d3b47b);border:2px solid #a77f4f;color:#4d372c;box-shadow:inset 0 0 0 2px #f8e8c2;font:600 11px system-ui,sans-serif}.class-card strong{font:800 15px Georgia,serif;color:#60372e}.class-card.selected{background:linear-gradient(180deg,#4c704e,#294a3b);border:2px solid #caa55e;color:#fff0cf;box-shadow:0 0 0 2px #446346}.class-card.selected strong{color:#fce4a6}.class-card .figure{font-size:29px}.dialog .problem{background:#764036;border:2px solid #a98553;box-shadow:inset 0 0 0 2px #e0bd84;color:#30251f}.problem .topic{color:#765037;font:600 12px/1.5 system-ui,sans-serif}.problem .equation{color:#622f3a;font:800 clamp(22px,4vw,31px) Georgia,serif}.dialog .micro{color:#654631}.feedback{color:#a12838}.hint{background:#d9e5c3;color:#2f492b;border-left:4px solid #568160}.questline{color:#674c39;font:600 11px system-ui,sans-serif}.dialog .shop-item{background:#f0d9a9;border:1px solid #a47b4d;color:#4c3228}.dialog .shop-item span{color:#654d39}.dialog .results>div{background:#edd9b6;border:1px solid #b58a54;color:#3c2b25}.dialog .results>div strong{color:#7b3a34}.pdpr{background:#e8d2a7;border:1px solid #c39c62;color:#452d23}.pdpr p{color:#4b352b}.win-stars{color:#a26040}.toast{background:#263d31;border:2px solid #cba56b;color:#fff3d9}
+#map-details>div{background:#ecd6ad!important;border-color:#ae8150!important;color:#564332!important}#map-details>div:nth-child(3n){border-left-width:3px!important}
+@media(max-width:1100px){.main-grid{grid-template-columns:235px minmax(0,1fr)}.world-name{font-size:12px}.world-icon{font-size:20px;width:32px;height:32px}.world-state{font-size:8px}.brand h1{font-size:18px}.kicker{font-size:7px}}
+@media(max-width:750px){.app{width:calc(100% - 9px);padding:4px 0;gap:5px}.top{padding:4px 5px;min-height:44px}.top:after{display:none}.brand{gap:7px}.emblem{width:32px;height:32px;font-size:17px;box-shadow:0 0 0 2px #281923}.brand h1{font-size:13px;letter-spacing:0}.brand p{font-size:7px;letter-spacing:.08em}.kicker{display:none}.topstats .stat:nth-child(3){background:#3a2a23;border-color:#85633c}.topactions{gap:3px}.topactions .btn{min-height:27px;font-size:9px}.world{min-height:41px;padding:3px 4px;gap:3px}.world-icon{width:21px;height:24px;font-size:15px;background:transparent;border:none}.world-name{font-size:9px;letter-spacing:0}.world-sub{font-size:8px}.world-state{display:none}.main-grid{display:block}.sidebar{display:none}.arena{grid-column:auto;grid-row:auto;height:100%;border:2px solid #b28a52}.arena-head{min-height:40px;padding:4px 7px}.arena-head h2{font-size:13px}.arena-head p{font-size:9px}.chapter-pill{font-size:8px;padding:4px}.scene-top,.scene-bottom{font-size:8px;padding:4px}.fighters{padding:4px 6px;gap:6px}.fighter-head{font-size:10px}.fighter-head span:last-child{font-size:9px}.meter{height:10px;margin:2px 0}.submeter{height:5px}.battle-log{min-height:26px;max-height:27px;padding:4px 6px;font-size:10px}.battle-actions{padding:5px;gap:4px}.battle-actions .btn{min-height:46px;font-size:10px;padding:3px 1px}.battle-actions .btn small{font-size:8px;margin-top:1px}.dialog{padding:11px;max-height:calc(100dvh - 12px)}.hero-heading{font-size:clamp(35px,9vw,46px)!important}.quest-tally{gap:4px;margin:5px 0}.quest-tally span{font-size:9px;padding:4px 5px}.subtitle-story{font-size:9px;margin:4px 0}.story-intro{font-size:11px!important;line-height:1.42!important}.class-card{min-height:70px;padding:4px}.class-card strong{font-size:12px}.class-card .figure{font-size:23px}.dialog .tipbox{font-size:10px;padding:7px}.dialog .eyebrow{font-size:9px}.dialog p{font-size:11px}.formrow{gap:4px;margin:6px 0}.formrow input,.formrow select,.answer-input{min-height:35px;padding:5px 7px}.pdpr-actions{grid-template-columns:1fr}}
+@media(max-height:650px){.top{min-height:36px;padding:3px 6px}.world{min-height:32px;padding:1px 5px}.arena-head{min-height:30px}.arena-head p{margin:1px 0}.fighters{padding:3px 6px}.battle-actions .btn{min-height:37px}.battle-log{min-height:23px;max-height:25px}.dialog{padding:8px}.dialog h2{font-size:22px}.hero-heading{font-size:34px!important}.start-sigil{font-size:18px}.subtitle-story{margin:2px 0}.story-intro{margin:4px auto!important;font-size:10px!important}.class-card{min-height:59px}.class-card .figure{font-size:18px}.quest-tally{margin:3px 0}.tipbox{padding:5px 7px}}
+@media(max-width:350px){.emblem{display:none}.brand h1{font-size:12px}.brand p{display:none}.world-name{font-size:8px}.world-sub{font-size:7px}}
+
+
+@media (orientation:landscape) and (max-height:520px){
+.app{width:calc(100% - 10px);padding:3px 0;gap:4px;grid-template-rows:auto minmax(0,1fr)}
+.top{min-height:36px;padding:2px 7px}.brand{gap:7px}.brand h1{font-size:15px}.brand p,.kicker{display:none}.emblem{width:30px;height:30px;font-size:16px;box-shadow:none}.stat{padding:2px 5px}.topactions .btn{min-height:26px;padding:2px 6px}
+.worlds,.sidebar{display:none}.main-grid{display:block}.arena{grid-column:auto;grid-row:auto;height:100%;border:2px solid #b28a52}.arena-head{min-height:31px;padding:3px 8px}.arena-head h2{font-size:14px}.arena-head p{font-size:9px;margin:1px 0}.chapter-pill{font-size:9px;padding:4px}
+.fighters{padding:3px 7px;gap:7px}.fighter-head{font-size:10px}.meter{height:8px;margin:2px 0}.submeter{height:4px}.battle-actions{padding:3px;gap:4px}.battle-actions .btn{min-height:37px;font-size:10px;padding:3px 2px}.battle-actions .btn small{font-size:8px;margin-top:1px}.battle-log{min-height:23px;max-height:23px;font-size:10px;padding:3px 7px}
+.mobile-tools{display:flex;gap:4px;position:absolute;top:5px;right:6px;z-index:4}.mobile-tools .btn{font-size:9px;min-height:27px;padding:3px 5px}.dialog{padding:9px;max-height:calc(100dvh - 12px)}.hero-heading{font-size:32px!important}.start-sigil{font-size:16px}.subtitle-story{margin:2px 0}.story-intro{font-size:10px!important;margin:3px auto!important}.quest-tally{margin:3px 0}.class-card{min-height:57px;padding:3px}.class-card .figure{font-size:17px}.dialog .tipbox{padding:5px;font-size:9px}
+}
+
+/* Naik taraf kemahiran & sistem hidup semula — reka bentuk kitab fantasi yang sama */
+.skills-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:15px 0 6px;border-top:2px solid #a77c4e;padding-top:13px;color:#653a2d;font-size:12px}.skills-heading span{font-size:11px}.skills-explain{margin:3px 0 9px!important}.skill-items{display:grid;gap:7px}.skill-items .shop-item{min-height:54px}.skill-items .shop-item i{font-style:normal;font-weight:800;color:#793d32}.skill-items button{min-width:58px}.skill-icon{min-width:30px;text-align:center;font:700 25px Georgia,serif!important;color:#7a3f36!important}.death-dialog{border-color:#833d43;background:linear-gradient(160deg,#f0d9b6,#cfaa87 65%,#b98574);max-width:565px}.death-dialog h2{font-size:clamp(27px,5vw,42px);color:#872e32}.death-dialog .death-icon{font:900 48px Georgia,serif;color:#943b42;filter:drop-shadow(2px 3px 0 #e5b896);line-height:1}.death-checkpoint{background:#593332;color:#ffe9ba;border:2px solid #be945c;padding:12px 15px;font:800 15px Georgia,serif;margin:10px 0}.death-count{font:800 14px system-ui,sans-serif;letter-spacing:.04em;color:#792e36;padding:6px}.death-resume{width:100%;margin:10px 0;min-height:48px;font-size:14px}.death-certificate-note{margin:6px 0!important;text-align:center;font-weight:800!important;color:#7e3335!important;font-size:12px!important}.sidebox .resource-grid{gap:5px}.sidebox .resource{padding:5px 7px}.sidebox .resource strong{font-size:17px}.sidebox .resource span{font-size:8px}.questline{color:#844339!important}
+@media(max-width:750px){.skills-heading{margin-top:10px;padding-top:9px}.skill-items .shop-item{padding:6px}.death-dialog .death-icon{font-size:39px}.death-dialog p{margin:5px 0}.death-checkpoint{padding:8px;margin:7px 0}}
+
+/* ANIMASI SERANGAN MUSUH — menerkam, hentaman, recoil dan kembali ke soalan */
+body.enemy-animating .scene-top,body.enemy-animating .scene-bottom,body.enemy-animating .mobile-tools{visibility:hidden}
+.enemy-attack-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;flex-direction:column;z-index:6;pointer-events:none;padding:clamp(10px,2.5vh,22px) 10px 8px;text-align:center;background:linear-gradient(180deg,#130b12bb 0%,transparent 29%,transparent 72%,#170c15c4 100%)}
+.enemy-attack-title{font:900 clamp(12px,2.3vw,25px) Georgia,serif;letter-spacing:.09em;color:#ffdfad;text-shadow:0 2px 0 #531b27,0 0 10px #9d243b;animation:attack-hud-pulse .44s ease-in-out infinite alternate}
+.enemy-attack-status{font:900 clamp(10px,1.7vw,15px) system-ui,sans-serif;letter-spacing:.06em;color:#ffdbbd;border:2px solid #bd7452;background:#431c25e8;box-shadow:inset 0 0 0 2px #23151a,0 0 15px #8e1b3d66;padding:7px 16px;max-width:96%}
+@keyframes attack-hud-pulse{from{filter:brightness(.88);transform:scale(.99)}to{filter:brightness(1.2);transform:scale(1.03)}}
+@media(max-width:750px){.enemy-attack-layer{padding:6px}.enemy-attack-title{font-size:clamp(11px,3.4vw,18px)}.enemy-attack-status{font-size:10px;padding:3px 7px}}
+@media(prefers-reduced-motion:reduce){.enemy-attack-title{animation:none}}
+
+/* Sinematik hero: setiap aksi mempunyai kesan tersendiri dalam arena, bukan di belakang soalan. */
+body.hero-animating .scene-top,body.hero-animating .scene-bottom,body.hero-animating .mobile-tools{visibility:hidden}
+.hero-action-layer{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:space-between;align-items:center;pointer-events:none;text-align:center;padding:clamp(10px,2.5vh,22px) 9px 9px;background:linear-gradient(180deg,#0f111bcc 0%,transparent 28%,transparent 73%,#0c1824ba 100%)}
+.hero-action-title{font:900 clamp(13px,2.3vw,25px) Georgia,serif;letter-spacing:.1em;color:#fff0b5;text-shadow:0 3px 0 #443321,0 0 16px #f6c27470}
+.hero-action-status{font:900 clamp(10px,1.8vw,15px) system-ui,sans-serif;letter-spacing:.035em;color:#fff2ce;border:2px solid #b79b56;background:#33402de8;box-shadow:inset 0 0 0 2px #1c2826,0 0 19px #ceaa6555;padding:6px 15px;max-width:96%}
+.hero-action-layer[data-type="magic"] .hero-action-status{border-color:#b59cfa;background:#372953ec;color:#e9dafa}
+.hero-action-layer[data-type="guard"] .hero-action-status{border-color:#a9d8f1;background:#233d50ec;color:#d8f5ff}
+.hero-action-layer[data-type="potion"] .hero-action-status{border-color:#9de3ac;background:#284c35ed;color:#d9ffe0}
+@media(max-width:750px){.hero-action-layer{padding:6px}.hero-action-title{font-size:clamp(11px,3.5vw,17px)}.hero-action-status{font-size:10px;padding:3px 7px}}
+
+/* EDISI TELEFON PINTAR — responsif sentuhan, arena tanpa distorsi, papan kekunci mesra iOS/Android */
+html { -webkit-text-size-adjust:100%; }
+button, a, select { touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+button:active:not(:disabled), .class-card:active { filter:brightness(1.12); }
+.stage canvas { object-fit:contain; }
+.dialog, .overlay { overscroll-behavior:contain; }
+.dialog { -webkit-overflow-scrolling:touch; }
+/* Gunakan ketinggian visual viewport apabila papan kekunci telefon terbuka. */
+body.keyboard-visible .overlay:not([hidden]) { height:var(--mobile-visual-height,100dvh); top:var(--mobile-visual-top,0px); bottom:auto; }
+body.keyboard-visible .dialog { max-height:calc(var(--mobile-visual-height,100dvh) - 12px); }
+@media (hover:none) and (pointer:coarse) {
+ .btn,.class-card,.world,.dialog a { -webkit-tap-highlight-color:rgba(0,0,0,0); }
+ .dialog .btn, .dialog-actions .btn, .class-card, .shop-item .btn { min-height:44px; }
+ .formrow input,.formrow select,.answer-input { font-size:16px!important; min-height:46px; }
+ .answer-input { min-width:0; flex:1; }
+ .overlay { padding: max(6px,env(safe-area-inset-top)) 7px max(6px,env(safe-area-inset-bottom)); }
+ .dialog { max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 12px); }
+ .dialog-actions .btn { padding:9px 12px; }
+ .shop-item { gap:8px; }
+ .shop-item .btn { min-width:64px; }
+}
+/* Tajuk diberi ruang penuh pada skrin sempit; kredit kelihatan di stor. */
+@media screen and (max-width:480px){
+ .topstats{display:none!important}
+ .top{justify-content:space-between}
+ .brand{min-width:0;flex:1 1 auto}
+ .brand h1{white-space:normal;line-height:1.06}
+ .topactions{flex:0 0 auto}
+ .topactions .btn{white-space:nowrap}
+}
+/* Paparan menegak: dua lajur tindakan yang boleh ditekan dengan ibu jari. */
+@media screen and (max-width:750px) and (orientation:portrait) {
+ body { background:#150f12; }
+ .app { width:100%; padding: max(3px,env(safe-area-inset-top)) 5px max(4px,env(safe-area-inset-bottom)); gap:4px; grid-template-rows:auto auto minmax(0,1fr); }
+ .top { padding:4px 6px; min-height:43px; }
+ .brand h1 { font-size:clamp(13px,4vw,17px); }
+ .brand p { font-size:7px; letter-spacing:.04em; }
+ .topactions .btn { min-height:42px; min-width:42px; font-size:10px; padding:5px 7px; }
+ .worlds { grid-template-columns:repeat(3,minmax(0,1fr));gap:4px; }
+ .world { min-width:0; padding:5px 4px; min-height:43px; }
+ .world-icon { font-size:17px; width:23px; height:23px; flex:0 0 23px; }
+ .world-name { font-size:clamp(8px,2.6vw,11px); line-height:1.12; white-space:normal; max-height:2.3em; }
+ .world-sub { font-size:8px; }
+ .main-grid { display:block; min-height:0; }
+ .arena { display:flex; flex-direction:column; min-height:0; height:100%; border-width:2px; }
+ .arena-head { padding:5px 8px; min-height:42px; flex-shrink:0; }
+ .arena-head h2 { max-width:100%; font-size:clamp(12px,3.7vw,16px); white-space:normal; line-height:1.12; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+ .arena-head p { font-size:10px; line-height:1.2; }
+ .chapter-pill { flex:0 0 auto; font-size:9px; padding:5px; }
+ .stage { flex:1 1 auto; min-height:0; background:radial-gradient(ellipse at 50% 55%,#392b2e,#160f18 70%); }
+ .stage:before { content:''; position:absolute; inset:0; opacity:.35; pointer-events:none; background:repeating-linear-gradient(0deg,transparent 0 22px,#ae854113 23px 24px),repeating-linear-gradient(90deg,transparent 0 70px,#e2b9690c 71px 73px); }
+ .stage canvas { z-index:0; position:relative; width:100%; height:100%; min-height:0; max-width:100%; max-height:100%; aspect-ratio:auto; object-fit:contain; image-rendering:pixelated; }
+ .scene-top { max-width:45%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+ .mobile-tools { right:6px; top:5px; gap:5px; }
+ .mobile-tools .btn { min-width:66px; min-height:39px; font-size:10px; padding:6px; }
+ .scene-bottom { font-size:9px; }
+ .fighters { padding:7px 7px 5px; gap:8px; flex-shrink:0; }
+ .fighter-head { gap:4px; flex-wrap:wrap; white-space:normal; line-height:1.15; }
+ .fighter-head span:first-child { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+ .fighter-head span:last-child { margin-left:auto; font-size:10px; }
+ .meter { height:12px; margin:4px 0; }
+ .submeter { height:6px; }
+ .micro { font-size:9px; }
+ .battle-log { min-height:36px; max-height:36px; font-size:11px; line-height:1.17; }
+ .battle-log span:last-child { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
+ .battle-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; padding:6px 7px max(7px,env(safe-area-inset-bottom)); flex-shrink:0; }
+ .battle-actions .btn { display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; min-height:clamp(48px,7.4dvh,62px); padding:5px 6px; font-size:clamp(12px,3.7vw,15px); line-height:1.12; touch-action:manipulation; }
+ .battle-actions .btn small { display:block; font-size:10px; margin-top:3px; opacity:.85; }
+ .dialog { width:min(570px,100%); padding:clamp(11px,3vw,18px); }
+ .dialog .eyebrow { line-height:1.25; }
+ .dialog .problem { margin:8px 0; padding:13px 12px; }
+ .dialog .problem .topic{font-size:clamp(15px,4.1vw,18px);line-height:1.55;}
+ .dialog .problem .equation { font-size:clamp(28px,8vw,40px); color:#53320c; overflow-wrap:anywhere; }
+ .question-overlay .dialog, #question-overlay .dialog { width:min(570px,100%); }
+ #answer-form > div { align-items:stretch; }
+ #answer-form .btn { min-width:87px; }
+ .dialog-actions { gap:8px; }
+ .class-grid { gap:5px; }
+ .class-card { min-height:78px; }
+ .class-card .figure { font-size:25px; }
+ .pdpr-actions { display:grid; grid-template-columns:1fr; }
+ .pdpr-actions .btn { min-height:48px; }
+}
+/* Telefon pendek: pastikan arena dan 4 butang masih kelihatan. */
+@media screen and (max-width:750px) and (orientation:portrait) and (max-height:690px) {
+ .app { gap:3px; padding-top:2px; }
+ .top { min-height:37px; padding:2px 5px; }
+ .emblem { width:30px; height:30px; }
+ .brand p { display:none; }
+ .world { min-height:33px; padding:2px 4px; }
+ .world-icon { font-size:15px; width:20px; height:20px; flex-basis:20px; }
+ .world-sub { display:none; }
+ .arena-head { min-height:35px; padding:3px 7px; }
+ .arena-head p { font-size:9px; }
+ .fighters { padding:3px 6px; }
+ .fighter-head { font-size:10px; }
+ .meter { height:9px; margin:2px 0; }
+ .submeter { height:5px; }
+ .battle-log { min-height:27px; max-height:27px; font-size:10px; }
+ .battle-actions { gap:4px; padding:4px 5px max(5px,env(safe-area-inset-bottom)); }
+ .battle-actions .btn { min-height:clamp(44px,7dvh,50px); font-size:12px; }
+ .battle-actions .btn small { font-size:9px; margin-top:1px; }
+ .mobile-tools .btn { min-height:42px; min-width:60px; }
+}
+/* Telefon sangat kecil: item kedai dan dialog kekal boleh digunakan melalui skrol dalaman. */
+@media screen and (max-width:355px) and (orientation:portrait) {
+ .topactions .btn { min-width:38px; padding:3px 4px; }
+ .world-icon { display:none; }
+ .world-name { font-size:9px; }
+ .arena-head h2 { font-size:12px; }
+ .mobile-tools .btn { min-width:57px; min-height:42px; }
+ .battle-actions .btn { font-size:12px; }
+ .formrow { grid-template-columns:1fr; }
+ #answer-form .btn { min-width:76px; }
+ .shop-item { padding:7px 6px; }
+ .shop-item b { font-size:11px; }
+}
+/* Modal pendaftaran pada telefon pendek — butang MULA boleh dicapai tanpa menyorok di hujung halaman. */
+@media screen and (max-width:420px) and (orientation:portrait) and (max-height:620px){
+ #start-overlay .start-sigil{display:none}
+ #start-overlay .hero-heading{font-size:clamp(27px,9vw,37px)!important;line-height:.95!important;margin:3px 0!important}
+ #start-overlay .subtitle-story{margin:0 0 4px;font-size:9px}
+ #start-overlay .story-intro{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:10px!important;margin:3px auto!important}
+ #start-overlay .quest-tally{margin:4px 0;gap:3px}
+ #start-overlay .quest-tally span{padding:3px 4px;font-size:8px}
+ #start-overlay .formrow{gap:4px;margin:4px 0}
+ #start-overlay .formrow label{font-size:9px}
+ #start-overlay .formrow input,#start-overlay .formrow select{min-height:42px;margin-top:3px}
+ #start-overlay .class-grid{margin:4px 0;gap:3px}
+ #start-overlay .class-card{min-height:55px;padding:3px}
+ #start-overlay .class-card .figure{font-size:17px}
+ #start-overlay .class-card strong{font-size:10px}
+ #start-overlay .tipbox{font-size:9px;padding:6px;margin-top:5px}
+ #start-overlay #start-btn{min-height:44px;font-size:11px}
+}
+/* Melintang: minimum 44px sentuh, kekalkan nisbah grafik; dialog boleh ditatal. */
+@media screen and (orientation:landscape) and (max-height:520px) and (pointer:coarse) {
+ .app { padding:2px 5px max(2px,env(safe-area-inset-bottom)); gap:3px; }
+ .top { min-height:36px; }
+ .topactions .btn,.mobile-tools .btn { min-height:44px; }
+ .battle-actions .btn { min-height:44px; font-size:12px; }
+ .arena-head { min-height:30px; }
+ .stage canvas { width:100%; height:100%; max-height:100%; max-width:100%; object-fit:contain; aspect-ratio:auto; }
+ .fighters { padding:3px 7px; }
+ .battle-log { min-height:24px; max-height:26px; }
+ .dialog { max-height:calc(100dvh - 8px); padding:10px 14px; }
+ .formrow { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .class-card { min-height:65px; }
+ .class-card .figure { font-size:20px; }
+}
+
+/* PROTOKOL Z · REDESIGN UI TACTICAL BIOHAZARD — mobile-first overrides */
+:root{--bg:#071413;--panel:#112524;--panel2:#1b3330;--edge:#476e61;--text:#eff7e9;--muted:#bacfc5;--mint:#cafa8d;--gold:#ffd38b;--pink:#ff7c82;--violet:#7eebdd;--blue:#9fdfdf}
+body{background:radial-gradient(ellipse at 15% -15%,#325344 0%,transparent 43%),radial-gradient(ellipse at 85% 90%,#1a4243 0%,transparent 50%),#061412;color:#eaf8ee;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+body:before{opacity:.19;background-image:linear-gradient(#91d4b016 1px,transparent 1px),linear-gradient(90deg,#91d4b016 1px,transparent 1px);background-size:44px 44px}
+.pix,.hero-heading,.dialog h2,.brand h1,.world-name,.side-title{font-family:'Arial Narrow',Impact,system-ui,sans-serif;font-weight:900;letter-spacing:.052em}
+.kicker,.brand p,.eyebrow{font-family:Consolas,'Courier New',monospace;letter-spacing:.14em}
+.top{background:linear-gradient(95deg,#132723,#0e2121 68%,#1c2d29);border:1px solid #58725b;box-shadow:inset 0 0 0 3px #0c1d1b,0 4px 0 #070f10}
+.top:after{content:'REC ●';color:#ed786c;font:700 10px Consolas,monospace;right:15px;bottom:-1px;letter-spacing:.1em}
+.emblem{border:2px solid #c4e888;background:radial-gradient(circle,#416c46,#16312b);box-shadow:0 0 0 3px #0e211c,0 0 0 4px #557958;border-radius:4px;color:#ddf49a}
+.brand h1{color:#f5f6e2;text-shadow:1px 2px #0d1b17}.brand h1 .gold{color:#d4fc85}.brand p,.kicker{color:#9accaf}
+.stat{background:#122923;border:1px solid #4d7565}.stat b{color:#e3f7cf}.stat span{color:#abc6b2}
+.btn{background:linear-gradient(180deg,#33564b,#234138);border:1px solid #6f9c7d;border-bottom:3px solid #183029;color:#e7f8da;border-radius:5px;box-shadow:inset 0 1px 0 #ffffff20}
+.btn:hover:not(:disabled){filter:brightness(1.15)}.btn.main,.battle-actions .btn.main{background:linear-gradient(180deg,#ddf7a3,#9ed06f);border-color:#edffca;border-bottom-color:#5b864d;color:#172b25}
+.btn.goldbtn{background:linear-gradient(180deg,#ffe2a2,#e6ab58);border-color:#fff0cc;border-bottom-color:#936c35;color:#322a1d}
+.btn.ghost{background:#1b3431;color:#d2efe0;border-color:#587d70}
+.world{border:1px solid #497765;border-left:4px solid #659374;box-shadow:none;background:linear-gradient(125deg,#1b3731,#132622)}.world.active{border-color:#bceb87;background:linear-gradient(120deg,#315542,#18392f)}.world.complete{border-color:#b7a16e}.world.locked{opacity:.52}
+.world-icon{border:1px solid #679879;background:#173930;color:#e4f6ac}.world-name{font-size:13px;color:#e6f9d9}.world-sub{color:#9ec6b3}.world-state{color:#c2f48b}
+.card,.arena{border:2px solid #567d6e;background:#101e20;box-shadow:0 3px 0 #071615}
+.arena:before{background:repeating-linear-gradient(45deg,#e1c16b 0 9px,#192f2d 9px 20px)}
+.arena-head{background:#122923;border-bottom:1px solid #447969}.arena-head h2{color:#eaf9d9}.arena-head p{color:#b8d4c6}.chapter-pill{background:#254e3e;color:#e2ffab;border:1px solid #7aa078}
+.stage{background:#0b2324}.scene-top,.scene-bottom{background:#0b2523e8;border:1px solid #74a087;color:#f0f8d9}
+.fighters{background:linear-gradient(180deg,#132e29,#101f22);border-top:2px solid #709778}.fighter-head{color:#ecf4e5}.meter{border:1px solid #557a6b;background:#0a1a1a}.fill{background:linear-gradient(90deg,#90e5a3,#c5f36f)}.fill.hp{background:linear-gradient(90deg,#f36977,#ffb374)}.fill.mp{background:linear-gradient(90deg,#59b4b3,#9af8df)}
+.battle-log{background:#102521;border-top:1px solid #4b7865;color:#e2f2dd}.battle-log .spark{color:#c9f39b}
+.battle-actions{background:#0e2623;border-top:1px solid #648776}.battle-actions .btn{font-family:system-ui,sans-serif;font-weight:900}
+.battle-actions .btn.magic{background:linear-gradient(#1d6563,#154b4d);border-color:#71c6b6;color:#dffff8}.battle-actions .btn.defense{background:linear-gradient(#536d51,#314b3d);border-color:#9bbb80;color:#f2ffe3}.battle-actions .btn.potion{background:linear-gradient(#6f4649,#4a2b35);border-color:#c08483;color:#ffe3e3}
+.sidebar{gap:9px}.sidebox{background:linear-gradient(155deg,#233d35,#152e2b);border:1px solid #659880;box-shadow:inset 0 0 0 2px #152d28,0 3px 0 #071717;color:#edf8e8}.sidebox .side-title{color:#ddf3c5}.sidebox .micro{color:#9cc6b3}.sidebox .resource{background:#0c2924;border:1px solid #45705c}.sidebox .resource strong{color:#dbf79a}.sidebox .resource span,.side-note,.quest-caption{color:#b8d7c5}.quest{background:#1b3430;border-color:#4d7164;color:#91b19d}.quest.done{background:#456942;border-color:#c2ed87;color:#edffc0}.quest.now{background:#2c5c4d;border-color:#d3fca7;color:#efffc9}.legend{color:#bed9cb!important;border:1px solid #608873!important;background:#102c2a!important}.legend b{color:#dafa99}
+.overlay{background:radial-gradient(ellipse at center,#122a27db,#05100feb);backdrop-filter:blur(3px)}.overlay:before{background-image:linear-gradient(#93c5ad0d 1px,transparent 1px),linear-gradient(90deg,#93c5ad0d 1px,transparent 1px);background-size:36px 36px}
+.dialog{background:linear-gradient(160deg,#152b2b,#101e20 78%);border:2px solid #68927d;box-shadow:0 0 0 4px #09201c,0 9px 30px #0009;color:#edf7df}.dialog h2{color:#dbf4a5}.dialog p,.dialog .story-intro{color:#c5dbce}.eyebrow{color:#c3ed8c}.start-sigil{background:#1c3d33;border:2px solid #80a76e;color:#f2d09f}.start-sigil span{filter:grayscale(.4)}.hero-heading{color:#d6f69b;text-shadow:0 3px #123829}.hero-heading span{color:#f4f6d4}.subtitle-story{color:#d6af6a}.quest-tally span{background:#203d36;border-color:#4c7766;color:#d1edc1}.class-card{background:#16352f;color:#ebf7e7;border:1px solid #57826d}.class-card.selected{background:#2d5944;border:2px solid #c7f29b;box-shadow:0 0 0 1px #426f4f}.class-card .figure{filter:none}.class-card strong{color:#e4f9ba}
+.formrow input,.formrow select,.answer-input{background:#0c211f;border:1px solid #5b917b;color:#f1ffe5}.formrow label{color:#c3edab}.tipbox{background:#193930;border-left:4px solid #b4e979;color:#c8e3c6}.problem{background:#132c2b;border:1px solid #557e70}.problem .topic{color:#b9dec0}.problem .equation{color:#f1efbb}.hint{background:#244c40;border-left:3px solid #c9ef91;color:#f3ffe8}.feedback{color:#ffb4ad}.questline{color:#add9c6}
+.shop-item{background:#18342d;border:1px solid #547c67;color:#e6f4d9}.shop-item span{color:#bad8c2}.shop-item b{color:#edffd7}.skills-heading{border-top:2px solid #597f69;color:#d5f3a8}.skills-explain{color:#bcdbca}.skill-icon{background:#24463a;color:#d3f6aa}.death-dialog{background:linear-gradient(135deg,#2c2024,#131b1e);border-color:#a46e65}.death-icon{color:#f4b09b}.death-checkpoint{background:#2d2b2a;border-color:#996a52;color:#e5d3b0}.death-count{color:#ffac9d}.pdpr{background:#19362e;border-color:#6fa07a;color:#e8f4da}.pdpr b{color:#e0f4ab}.death-certificate-note{background:#263b35;color:#e5ecb1}
+#map-details>div{background:#18372d!important;border-color:#527d66!important;color:#d8edce!important}
+.enemy-attack-layer,.hero-action-layer{background:linear-gradient(180deg,#11231e18,#0d1f1e88)}.enemy-attack-title{color:#ffbbb1}.enemy-attack-status{background:#402926eb;border-color:#b06962}.hero-action-title{color:#eaffbb}.hero-action-status{background:#203b35ed;border-color:#a4d18e;color:#e8ffdc}
+@media(max-width:750px){.app{max-width:100%;width:calc(100% - 8px)}.brand h1{font-size:14px}.hero-heading{font-size:clamp(30px,8.5vw,45px)!important}.arena-head h2{font-size:13px}.battle-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.battle-actions .btn{min-height:48px}.top:after{display:none}.world{min-height:40px}.scene-top{font-size:9px}}
+@media(orientation:landscape) and (max-height:520px){.battle-actions{grid-template-columns:repeat(4,1fr)}.battle-actions .btn{min-height:42px}.stage canvas{object-fit:contain}}
+
+
+/* Selesaikan keutamaan gaya legasi skrin pembukaan. */
+#start-overlay .hero-heading{font-family:Impact,'Arial Narrow',system-ui,sans-serif!important;letter-spacing:.035em!important;text-shadow:2px 3px 0 #152a25!important;color:#d5f6ad!important}
+#start-overlay .hero-heading span{font-family:inherit!important;color:#faf8dc!important}
+#start-overlay .tipbox{background:#18382f!important;border:1px solid #689b76!important;border-left:4px solid #b9ef80!important;color:#d9eddb!important}
+#start-overlay .tipbox b{color:#eff9c5!important}
+#start-overlay .class-card strong{font-family:system-ui,sans-serif!important;font-size:11px!important}
+@media(max-width:420px){#start-overlay .hero-heading{font-size:clamp(31px,9.3vw,45px)!important}#start-overlay .class-card{min-height:75px}#start-overlay .class-card .figure{font-size:22px}}
+
+</style></head><body>
+<main class="app" id="app">
+<header class="top"><div class="brand"><div class="emblem"><span>☣</span></div><div><div class="kicker">OUTBREAK RESPONSE • KSSM MATEMATIK TINGKATAN 1</div><h1 class="pix">PROTOKOL <span class="gold">Z</span></h1><p class="pix">OPERASI FAJAR · SQUAD TINDAK BALAS</p></div></div><div class="topstats"><div class="stat"><span>ANGGOTA</span><b id="top-name">BELUM MULA</b></div><div class="stat"><span>TAHAP</span><b id="top-level">LV 1</b></div><div class="stat"><span>KREDIT</span><b id="top-gold">0 G</b></div><div class="stat"><span>XP</span><b id="top-xp">0</b></div></div><div class="topactions"><button class="btn small ghost" id="switch-btn">↻ AKAUN</button><button class="btn small ghost" id="sound-btn">♫ OFF</button></div></header>
+<nav class="worlds" id="worlds" aria-label="Zon operasi"></nav>
+<div class="main-grid">
+<section class="arena card" aria-label="Medan pertempuran Matematik"><header class="arena-head"><div style="min-width:0"><h2 class="pix" id="chapter-name">BAB 1 · NOMBOR NISBAH</h2><p id="chapter-desc">Selesaikan cabaran untuk mengalahkan musuh.</p></div><span class="chapter-pill pix" id="quest-count">0/29 CABARAN</span></header><div class="stage"><canvas id="battle-canvas" width="720" height="405" aria-label="Arena pertarungan RPG pixel art"></canvas><div class="scene-top pix" id="scene-label">DAERAH KUARANTIN · BAB 1</div><div class="scene-bottom pix" id="scene-round">RONDA 1 / 2</div><div class="mobile-tools"><button class="btn small ghost" id="mobile-map">▦ MISI</button><button class="btn small ghost" id="mobile-shop">◈ STOR</button></div><div id="hero-action-layer" class="hero-action-layer" role="status" aria-live="polite" hidden><div class="hero-action-title" id="hero-action-title">⚔ AKSI SKUAD TAKTIKAL!</div><div class="hero-action-status" id="hero-action-status">BERSIAP UNTUK BERTINDAK...</div></div><div id="enemy-attack-layer" class="enemy-attack-layer" role="status" aria-live="polite" hidden><div class="enemy-attack-title" id="enemy-attack-title">⚔ ZOMBI MENYERANG!</div><div class="enemy-attack-status" id="enemy-attack-status">BERSEDIA UNTUK SERANGAN...</div></div></div><div class="fighters"><div><div class="fighter-head"><span id="hero-label">✪ SKUAD</span><span id="hero-hp-label">150 / 150 HP</span></div><div class="meter"><div class="fill" id="hero-hp" style="width:100%"></div></div><div class="meter submeter"><div class="fill mp" id="hero-mp" style="width:100%"></div></div><div class="micro" id="hero-mp-label">MP 60/60 · Perisai 0</div></div><div><div class="fighter-head"><span id="enemy-label">ZOMBI</span><span id="enemy-hp-label">100 / 100 HP</span></div><div class="meter"><div class="fill hp" id="enemy-hp" style="width:100%"></div></div><div class="micro" id="enemy-note">Jawab soalan untuk menyerang</div></div></div><div class="battle-log"><span class="spark">◈</span><span id="battle-message">Daftar sebagai anggota skuad untuk memulakan operasi.</span></div><div class="battle-actions"><button class="btn main" id="attack-btn">⌁ TEMBAK<small>Peluru standard</small></button><button class="btn magic" id="magic-btn">✦ TAKTIKAL<small>20 tenaga · Skill khas</small></button><button class="btn defense" id="guard-btn">⛨ BENTENG<small>Lindungi skuad</small></button><button class="btn potion" id="potion-btn">✚ MEDKIT<small id="potion-label">Stok: 2 · Pulih HP</small></button></div></section>
+<aside class="sidebar" aria-label="Panel perjalanan dan inventori"><div class="card sidebox"><div class="side-head"><h3 class="side-title pix">▦ PETA OPERASI</h3><span class="micro" id="map-progress">0/13</span></div><div class="quest-map" id="quest-map"></div><p class="quest-caption">Bab 4, 8 dan 13 ialah pertempuran mutan utama. Tamatkan operasi untuk menerima e-sijil.</p></div><div class="card sidebox"><div class="side-head"><h3 class="side-title pix">◈ BEKALAN SKUAD</h3><span class="gold micro" id="class-display">JUGGERNAUT</span></div><div class="resource-grid"><div class="resource"><strong id="potions-stock">2</strong><span>MEDKIT</span></div><div class="resource"><strong id="attack-level">+0</strong><span>NAIK TARAF SENJATA</span></div><div class="resource"><strong id="armor-level">+0</strong><span>ARMOR</span></div><div class="resource"><strong id="stars-count">0 ★</strong><span>BINTANG</span></div><div class="resource"><strong id="skill-points-count">0</strong><span>MATA KEMAHIRAN</span></div><div class="resource"><strong id="death-count">0 ☠</strong><span>KEMATIAN</span></div></div><p class="side-note" id="quest-note">Pilih tindakan taktikal dan jawab Matematik untuk menewaskan ancaman.</p><div class="sidebtns"><button class="btn goldbtn" id="shop-btn">⚒ STOR</button><button class="btn ghost" id="map-btn">✦ PETA</button></div></div><div class="legend"><b class="mint">PROTOKOL SURVIVAL:</b> Skill taktikal lebih kuat tetapi menggunakan tenaga. Benteng mengurangkan kerosakan dan mengecas tenaga. Medkit merawat HP apabila jawapan betul; jika salah stok tidak berkurang.</div></aside>
+</div></main>
+<section class="overlay" id="start-overlay" role="dialog" aria-modal="true" aria-labelledby="start-title"><div class="dialog"><div class="start-sigil">▣ <span>☣</span> ▣</div><div class="eyebrow">TUGASAN PdPR · FAIL OPERASI DIKLASIFIKASIKAN</div><h2 class="hero-heading" id="start-title">PROTOKOL Z<br><span>OPERASI FAJAR</span></h2><div class="subtitle-story">KOTA TERAKHIR · TAHAP ANCAMAN MERAH</div><p class="story-intro">Wabak Z telah melumpuhkan bandar. Pasukan penyelamat terakhir dihantar untuk mendapatkan <b>formula penawar</b> sebelum mutan Omega menguasai kota. Sertai skuad, tempuhi <b>13 bab Matematik Tingkatan 1</b> melalui <b>29 misi</b> dan tumpaskan tiga ketua zombi.</p><div class="quest-tally"><span>◈ 3 ZON KRITIKAL</span><span>✦ 29 CABARAN</span><span>☣ 3 MUTAN BOSS</span></div><div class="formrow"><label>NAMA ANGGOTA<input id="student-name" placeholder="Nama sebenar murid" autocomplete="off" maxlength="45"></label><label>KELAS<select id="student-class"><option>1 Infinity</option><option>1 Lokman Hakim</option><option>1 Alpha</option><option>1 Beta</option><option>1 Epsilon</option><option>1 Gamma</option><option>1 Lambda</option><option>1 Omega</option><option>1 Sigma</option><option>1 Theta</option></select></label></div><div class="eyebrow">PILIH PENGKHUSUSAN SKUAD</div><div class="class-grid" id="class-choices"><button class="class-card selected" data-role="knight"><span class="figure">🪖</span><strong>JUGGERNAUT</strong>Assault · Armor kukuh</button><button class="class-card" data-role="ranger"><span class="figure">🎯</span><strong>RANGER</strong>Jarak jauh · Tembakan tepat</button><button class="class-card" data-role="mage"><span class="figure">⚕</span><strong>TECHNOMEDIC</strong>Teknologi · Rawatan</button></div><button class="btn main" style="width:100%" id="start-btn">▶ MULAKAN / SAMBUNG OPERASI</button><div class="tipbox"><b>ARAHAN PdPR:</b> Selesaikan semua misi. Jawapan salah mencetuskan serangan zombi. Jika HP kosong, anda boleh <b>hidup semula pada soalan yang belum dijawab</b>. Kumpul XP, tingkatkan kemahiran dan selepas menang <b>muat turun e-sijil PNG</b>, kemudian muat naik ke Google Form untuk rekod kehadiran. Kemajuan disimpan pada browser/peranti ini.</div></div></section>
+<section class="overlay" id="question-overlay" role="dialog" aria-modal="true" aria-labelledby="question-title" hidden><div class="dialog"><div class="eyebrow" id="question-badge">TERMINAL TAKTIKAL · BAB 1</div><h2 id="question-title">SOALAN OPERASI</h2><div class="problem"><div class="topic" id="question-context"></div><div class="equation pix" id="question-text"></div></div><form id="answer-form"><label for="answer-input" class="micro">JAWAPAN MATEMATIK (NOMBOR)</label><div style="display:flex;gap:7px;margin-top:5px"><input id="answer-input" class="answer-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" required placeholder="Contoh: 12"><button class="btn main" type="submit">JAWAB ✓</button></div></form><div class="feedback" id="answer-feedback" aria-live="polite"></div><div class="hint" id="hint-content" hidden></div><div class="dialog-actions"><button class="btn ghost" id="hint-btn">💡 PETUNJUK</button><button class="btn ghost" id="cancel-question">↩ KEMBALI</button></div><div class="questline">Jawapan betul mengaktifkan Tembak, Taktikal, Benteng atau Medkit. Jawapan salah membolehkan zombi menyerang! HP 0 menyebabkan anggota tewas, tetapi misi boleh disambung pada soalan yang sama.</div></div></section>
+<section class="overlay" id="shop-overlay" role="dialog" aria-modal="true" aria-labelledby="shop-title" hidden><div class="dialog"><div class="eyebrow">POS KAWALAN · UNIT LOGISTIK</div><h2 id="shop-title">STOR TAKTIKAL</h2><p>Kredit tersedia: <b class="gold" id="shop-gold">0 K</b>. Gunakan ganjaran misi untuk naik taraf peralatan.</p><div class="shop-items"><div class="shop-item"><span class="skill-icon">✚</span><div><b>Pek Rawatan</b><span>+1 medkit · rawatan asas 55 HP</span></div><button class="btn goldbtn" data-item="potion">30 K</button></div><div class="shop-item"><span class="skill-icon">⌁</span><div><b>Larasan Laras Senjata</b><span>+9 kerosakan tembakan</span></div><button class="btn goldbtn" data-item="weapon">60 K</button></div><div class="shop-item"><span class="skill-icon">⛨</span><div><b>Vest Kevlar</b><span>Kurangkan kerosakan diterima +3</span></div><button class="btn goldbtn" data-item="armor">55 K</button></div></div><div class="skills-heading"><b>◈ NAIK TARAF KEMAHIRAN</b><span>Mata kemahiran: <strong id="shop-skill-points">0</strong> SP</span></div><p class="skills-explain">Naik level melalui XP untuk mendapatkan mata kemahiran. Setiap kemahiran boleh dinaikkan sehingga Tahap 5.</p><div class="skill-items"><div class="shop-item"><span class="skill-icon">⌁</span><div><b>Kecekapan Senjata</b><span>+12 kerosakan tembakan · <i id="skill-attack-level">Tahap 0</i></span></div><button class="btn goldbtn" data-skill="attack">1 SP</button></div><div class="shop-item"><span class="skill-icon">⚡</span><div><b>Teknologi Taktikal</b><span>+19 kerosakan skill khas, +5 tenaga maksimum · <i id="skill-magic-level">Tahap 0</i></span></div><button class="btn goldbtn" data-skill="magic">1 SP</button></div><div class="shop-item"><span class="skill-icon">⛨</span><div><b>Pertahanan Lapangan</b><span>Lebih tahan serangan zombi · <i id="skill-guard-level">Tahap 0</i></span></div><button class="btn goldbtn" data-skill="guard">1 SP</button></div><div class="shop-item"><span class="skill-icon">✚</span><div><b>Stamina Tempur</b><span>+20 HP maksimum · <i id="skill-vitality-level">Tahap 0</i></span></div><button class="btn goldbtn" data-skill="vitality">1 SP</button></div></div><div class="dialog-actions"><button class="btn main" id="close-shop">KEMBALI KE MEDAN →</button></div></div></section>
+<section class="overlay" id="map-overlay" role="dialog" aria-modal="true" aria-labelledby="map-title" hidden><div class="dialog"><div class="eyebrow">PETA KAWASAN · TIGA ZON</div><h2 id="map-title">REKOD OPERASI MATEMATIK</h2><div id="map-details" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px"></div><div class="dialog-actions"><button class="btn main" id="close-map">KEMBALI BERMAIN →</button></div></div></section>
+<section class="overlay" id="win-overlay" role="dialog" aria-modal="true" aria-labelledby="win-title" hidden><div class="dialog" style="text-align:center"><div class="eyebrow">☣ ZON OMEGA DINYAHAKTIFKAN · MISI BERJAYA</div><div class="win-stars">✦ ☣ ✦</div><h2 id="win-title">TAHNIAH, PENYELAMAT KOTA!</h2><p>Formula penawar telah berjaya diselamatkan. Anda menamatkan <b>29 cabaran Matematik Tingkatan 1</b> dalam <b>13 bab</b> dan menumpaskan tiga ketua zombi.</p><div class="results"><div><strong id="win-stars">0</strong><span>BINTANG</span></div><div><strong id="win-xp">0</strong><span>XP</span></div><div><strong id="win-time">00:00</strong><span>MASA</span></div><div><strong id="win-mistakes">0</strong><span>SALAH</span></div></div><p class="death-certificate-note">☠ BILANGAN KEMATIAN: <strong id="win-deaths">0</strong></p><div class="pdpr" style="text-align:left"><b>📋 PENGESAHAN KEHADIRAN PdPR</b><p><b>1.</b> Tekan <b>MUAT TURUN E-SIJIL PNG</b> untuk simpan imej sijil.</p><p><b>2.</b> Tekan <b>HANTAR E-SIJIL (GOOGLE FORM)</b>.</p><p><b>3.</b> Muat naik PNG sijil tadi dan tekan <b>Hantar</b> dalam Google Form. Penghantaran ini ialah bukti kehadiran PdPR.</p></div><div class="pdpr-actions"><button class="btn goldbtn" id="download-cert">⬇ MUAT TURUN E-SIJIL PNG</button><a id="form-link" class="btn main linkbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSedubKUIoRYDfoKiCZLcLbTFzRktIjCIg4ngXZkJvjwUfDZCg/viewform?usp=sharing&amp;ouid=105501317215166260995" target="_blank" rel="noopener noreferrer">↗ HANTAR E-SIJIL (GOOGLE FORM)</a></div><div class="dialog-actions"><button class="btn ghost" id="close-win">↩ LIHAT MEDAN</button></div><p class="micro">Sijil dijana pada peranti. Rekod kehadiran PdPR dihantar melalui Google Form, bukan secara automatik.</p></div></section>
+<section class="overlay" id="death-overlay" role="dialog" aria-modal="true" aria-labelledby="death-title" hidden><div class="dialog death-dialog" style="text-align:center"><div class="death-icon" aria-hidden="true">☠</div><div class="eyebrow">KOD HITAM · ANGGOTA TUMBANG</div><h2 id="death-title">ANGGOTA TEWAS!</h2><p>HP mencapai <b>0</b> akibat serangan zombi. Namun, data misi anda <b>masih disimpan</b>.</p><div class="death-checkpoint" id="death-checkpoint">Bab 1 · Soalan 1</div><p><b>Soalan yang sudah dijawab kekal selesai.</b> Tekan hidup semula untuk kembali ke soalan yang belum betul.</p><div class="death-count">☠ REKOD KEMATIAN: <strong id="death-total">1</strong></div><button class="btn main death-resume" id="revive-btn">✚ RAWAT &amp; SAMBUNG SOALAN</button><p class="micro">HP dan tenaga dipulihkan selepas rawatan kecemasan.</p></div></section>
+<div id="toast" class="toast" role="status" hidden></div>
+<script>
+'use strict';
+(()=>{
+const $=id=>document.getElementById(id),KEY='protokol_z_operasi_fajar_t1_v1';
+const CHAPTERS=['Nombor Nisbah','Faktor dan Gandaan','Kuasa Dua, Punca Kuasa Dua, Kuasa Tiga dan Punca Kuasa Tiga','Nisbah, Kadar dan Kadaran','Ungkapan Algebra','Persamaan Linear','Ketaksamaan Linear','Garis dan Sudut','Poligon Asas','Perimeter dan Luas','Pengenalan Set','Pengendalian Data','Teorem Pythagoras'];
+const WORLDS=[{name:'DAERAH KUARANTIN',icon:'☣',from:1,to:4,tag:'Zona Merah • Bab 1–4',bg:'#142623',floor:'#303d39',light:'#d7ff72'},{name:'METRO TERBIAR',icon:'▤',from:5,to:8,tag:'Transit 09 • Bab 5–8',bg:'#13272d',floor:'#2f3e43',light:'#7ce4e3'},{name:'MAKMAL OMEGA',icon:'⌬',from:9,to:13,tag:'Sektor Biohazard • Bab 9–13',bg:'#242b21',floor:'#474733',light:'#e9b66a'}];
+const ENEMIES=[['Pelari Jangkitan','runner'],['Perayap Longkang','crawler'],['Gerombolan Klinik','walker'],['ALPHA BREAKER','brute'],['Zombi Juruteknik','walker'],['Penyembur Toksik','spitter'],['Pemburu Metro','runner'],['HIVE OVERLORD','brute'],['Pengawal Terjangkit','armored'],['Pemecah Konkrit','brute'],['Subjek Makmal X','spitter'],['Pengintai Omega','crawler'],['PATIENT OMEGA','omega']];
+// Soalan dibina berdasarkan tajuk dan kemahiran KSSM Matematik Tingkatan 1. Dua soalan setiap bab dan satu tambahan pada setiap boss.
+const QUESTIONS=[
+[{t:'Bacaan suhu bilik simpanan vaksin ialah −23°C. Penjana menaikkan suhu sebanyak 15°C. Berapakah bacaan baharu?',e:'−23 + 15 = ?',a:-8,h:'Daripada −23, bergerak 15 unit ke kanan.',ex:'−23 + 15 = −8.'},{t:'Sistem kamera memerlukan hasil darab dua integer negatif.',e:'(−7) × (−4) = ?',a:28,h:'Darab dua nombor negatif menghasilkan nilai positif.',ex:'(−7) × (−4) = 28.'}],
+[{t:'Pusat bekalan mahu membahagi 42 pek makanan dan 70 botol air kepada kumpulan seragam terbesar. Cari FSTB.',e:'FSTB(42, 70) = ?',a:14,h:'Cari faktor sepunya terbesar; 42 = 3 × 14 dan 70 = 5 × 14.',ex:'FSTB(42,70) ialah 14.'},{t:'Dua penggera aktif setiap 9 dan 15 minit. Selepas berapa minit kedua-duanya berbunyi serentak lagi?',e:'GSTK(9, 15) = ?',a:45,h:'Cari gandaan terkecil yang sama bagi 9 dan 15.',ex:'GSTK(9,15) = 45 minit.'}],
+[{t:'Panel nyahkod pintu menunjukkan punca kuasa dua suatu nombor.',e:'√196 = ?',a:14,h:'Cari nombor yang apabila didarab sendiri menghasilkan 196.',ex:'14 × 14 = 196, jadi √196 = 14.'},{t:'Pengimbas biometrik memerlukan nilai kuasa tiga 6.',e:'6³ = ?',a:216,h:'Darab 6 × 6 × 6.',ex:'6³ = 216.'}],
+[{t:'Skuad membawa peluru penenang dan peluru isyarat dalam nisbah 3:4, jumlah 63. Berapakah peluru penenang?',e:'3 : 4, jumlah 63 → bahagian 3 = ?',a:27,h:'Jumlah bahagian ialah 7; satu bahagian ialah 63 ÷ 7.',ex:'3 × 9 = 27 peluru penenang.'},{t:'Tujuh bateri radio berharga 84 kredit. Berapakah harga satu bateri?',e:'84 ÷ 7 = ? kredit',a:12,h:'Harga seunit = jumlah harga ÷ bilangan bateri.',ex:'84 ÷ 7 = 12 kredit.'},{t:'Kenderaan peronda menempuh 156 km dalam 4 jam. Kira laju puratanya.',e:'156 ÷ 4 = ? km/j',a:39,h:'Laju = jarak ÷ masa.',ex:'156 ÷ 4 = 39 km/j.'}],
+[{t:'Gabungkan sebutan serupa dalam kod pemeriksaan pintu. Berikan pekali p.',e:'12p − 7p = ?p',a:5,h:'Tolak pekali 12 dan 7.',ex:'12p − 7p = 5p.'},{t:'Jika a = −2, hitung nilai ungkapan algebra berikut.',e:'4a − 3 = ?',a:-11,h:'Gantikan a dengan −2: 4(−2) − 3.',ex:'4(−2) − 3 = −11.'}],
+[{t:'Kunci pusat kawalan dibuka dengan menyelesaikan persamaan linear.',e:'4x + 9 = 37, x = ?',a:7,h:'Tolak 9 pada kedua-dua belah, kemudian bahagi 4.',ex:'4x=28, jadi x=7.'},{t:'Isyarat satelit menggunakan nilai y yang memenuhi persamaan.',e:'y/5 + 7 = 10, y = ?',a:15,h:'Tolak 7 dahulu, kemudian darab 5.',ex:'y/5=3, maka y=15.'}],
+[{t:'Stok perlindungan mesti memenuhi x − 3 ≤ 5. Cari integer TERBESAR bagi x.',e:'x − 3 ≤ 5 → integer terbesar x = ?',a:8,h:'Tambah 3 pada kedua-dua belah.',ex:'x ≤ 8, jadi integer terbesar ialah 8.'},{t:'Untuk mengaktifkan perangkap, cari integer terbesar yang memenuhi ketaksamaan ini.',e:'−3x ≥ 12 → integer terbesar x = ?',a:-4,h:'Bahagi dengan −3 dan songsangkan tanda.',ex:'x ≤ −4, jadi integer terbesar ialah −4.'}],
+[{t:'Dua sudut pada satu garis lurus membentuk 180°. Satu sudut ialah 73°. Cari yang lain.',e:'180° − 73° = ?°',a:107,h:'Jumlah dua sudut pada garis lurus ialah 180°.',ex:'180 − 73 = 107°.'},{t:'Dua garis bersilang membentuk sudut bertentangan bucu. Jika satu sudut 38°, berapakah sudut pasangannya?',e:'Sudut bertentangan bucu = ?°',a:38,h:'Sudut bertentangan bucu adalah sama besar.',ex:'Sudut itu ialah 38°.'},{t:'Tiga sudut di sekeliling satu titik ialah 75°, 120° dan 89°. Cari sudut terakhir.',e:'360° − (75° + 120° + 89°) = ?°',a:76,h:'Jumlah sudut di sekeliling satu titik ialah 360°.',ex:'360° − 284° = 76°.'}],
+[{t:'Juruteknik mengira jumlah sudut pedalaman heksagon untuk susun atur perisai.',e:'(6 − 2) × 180° = ?°',a:720,h:'Guna rumus (n−2) × 180° dengan n=6.',ex:'4 × 180° = 720°.'},{t:'Satu pelantar sekata berbentuk dekagon. Cari setiap sudut luarnya.',e:'360° ÷ 10 = ?°',a:36,h:'Sudut luar poligon sekata = 360° ÷ bilangan sisi.',ex:'360 ÷ 10 = 36°.'}],
+[{t:'Sebuah kawasan kuarantin berbentuk segi empat tepat 13 m × 7 m. Cari perimeternya.',e:'2 × (13 + 7) = ? m',a:40,h:'Perimeter segi empat tepat = 2(panjang + lebar).',ex:'2 × 20 = 40 m.'},{t:'Bumbung khemah rawatan berbentuk segi tiga bertapak 14 m, tinggi 9 m. Cari luasnya.',e:'½ × 14 × 9 = ? m²',a:63,h:'Luas segi tiga ialah setengah darab tapak darab tinggi.',ex:'½ × 14 × 9 = 63 m².'}],
+[{t:'A={1,3,5,7} dan B={3,6,7}. Berapa unsur dalam persilangan kedua-duanya?',e:'n(A ∩ B) = ?',a:2,h:'Cari unsur yang muncul dalam kedua-dua set.',ex:'A ∩ B = {3,7}; terdapat 2 unsur.'},{t:'Pangkalan merekod A={1,2,3}, B={3,4,5,6}. Cari bilangan unsur dalam A ∪ B.',e:'n(A ∪ B) = ?',a:6,h:'Kesatuan mengandungi unsur berbeza daripada kedua-dua set.',ex:'A ∪ B={1,2,3,4,5,6}; bilangan unsur 6.'}],
+[{t:'Bacaan jangkitan bagi lima zon ialah 6, 11, 15, 19, 22. Cari mediannya.',e:'6, 11, 15, 19, 22 → median = ?',a:15,h:'Median ialah nilai tengah apabila data disusun.',ex:'Nilai ketiga ialah 15.'},{t:'Kadar penggunaan vaksin empat pos ialah 6, 10, 14 dan 18 unit. Cari min.',e:'(6 + 10 + 14 + 18) ÷ 4 = ?',a:12,h:'Min = jumlah data ÷ bilangan data.',ex:'48 ÷ 4 = 12.'}],
+[{t:'Tangga kecemasan membentuk segi tiga bersudut tegak dengan sisi 7 m dan 24 m. Cari panjang hipotenus.',e:'√(7² + 24²) = ? m',a:25,h:'Teorem Pythagoras: c² = a² + b².',ex:'√(49+576)=√625=25 m.'},{t:'Laluan kabel mempunyai hipotenus 29 m dan satu sisi 20 m. Cari sisi yang hilang.',e:'√(29² − 20²) = ? m',a:21,h:'Sisi tegak = √(hipotenus² − sisi lain²).',ex:'√(841−400)=√441=21 m.'},{t:'Penjana kecemasan: dua sisi tegak ialah 10 m dan 24 m. Cari hipotenus.',e:'√(10² + 24²) = ? m',a:26,h:'10²+24² = 100+576 = 676.',ex:'√676 = 26 m.'}]
+];
+const CLASSES={knight:{name:'JUGGERNAUT',hp:185,mp:60,base:58,magic:76,armor:7,colors:['#adc19c','#56745d']},mage:{name:'TECHNOMEDIC',hp:132,mp:120,base:45,magic:92,armor:2,colors:['#a9dfd1','#3c8d88']},ranger:{name:'RANGER',hp:145,mp:82,base:68,magic:78,armor:3,colors:['#c9cc9c','#71875c']}};
+const BOSSES=[4,8,13],QUESTION_TOTAL=QUESTIONS.reduce((a,q)=>a+q.length,0);let db={profiles:[],activeId:null};try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&Array.isArray(d.profiles))db=d}catch(e){}let player=null,role='knight',action='attack',hintOpen=false,audioOn=false,audioCtx=null,currentOverlay='start-overlay',lastFX=null,toastTimer=null,tick=0,enemyAttack=null,heroAction=null;
+function save(){if(!player)return;db.activeId=player.id;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}};
+function level(){return 1+Math.floor((player?.xp||0)/360)}
+function maxHP(){return CLASSES[player.role].hp+(level()-1)*10+(player.skillVitality||0)*20}
+function maxMP(){return CLASSES[player.role].mp+(level()-1)*3+(player.skillMagic||0)*5}
+function worldIndex(ch){return ch<=4?0:ch<=8?1:2}
+function totalCorrect(){return player?.solved||0}
+function isBoss(ch){return BOSSES.includes(ch)}
+function enemyMax(){return QUESTIONS[player.chapter-1].length*55+(isBoss(player.chapter)?16:0)}
+function initEnemy(){player.enemyHp=enemyMax();player.round=0;player.defend=false}
+function mkPlayer(name,klass,r){return{id:Date.now().toString(36)+Math.random().toString(36).slice(2,8),name,klass,role:r,chapter:1,round:0,solved:0,enemyHp:110,hp:CLASSES[r].hp,mp:CLASSES[r].mp,shield:0,weapon:0,armor:0,potions:2,gold:45,xp:0,stars:0,mistakes:0,hints:0,seconds:0,won:false,certificateDownloaded:false,created:Date.now(),awards:[],defend:false,deaths:0,dead:false,failedStreak:0,skillPoints:0,skillAttack:0,skillMagic:0,skillGuard:0,skillVitality:0,lastAction:'attack'}}
+function migratePlayer(p){
+ const attrs=['deaths','failedStreak','skillAttack','skillMagic','skillGuard','skillVitality'];for(const k of attrs)if(!Number.isFinite(p[k]))p[k]=0;
+ if(!Number.isFinite(p.skillPoints)){const earned=Math.floor((p.xp||0)/360);const spent=p.skillAttack+p.skillMagic+p.skillGuard+p.skillVitality;p.skillPoints=Math.max(0,earned-spent)}
+ if(typeof p.dead!=='boolean')p.dead=false;
+ if(!['attack','magic','guard'].includes(p.lastAction))p.lastAction='attack';
+ if(p.dead)p.hp=0;
+ return p;
+}
+function earnXP(amount){const previous=level();player.xp+=amount;const points=level()-previous;if(points>0){player.skillPoints+=points;alertToast('★ NAIK TAHAP! +'+points+' mata kemahiran. Buka ARMORI untuk naik taraf.')}}
+function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+function fmt(s){s=Math.floor(s||0);return String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s/60)%60).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function alertToast(msg){const el=$('toast');el.textContent=msg;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.hidden=true,2600)}
+function log(msg){$('battle-message').textContent=msg}
+function playTone(type){if(!audioOn)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain(),now=audioCtx.currentTime;const freq={hit:230,magic:620,heal:540,good:750,bad:150,click:460,win:920}[type]||340;o.type=type==='bad'?'sawtooth':'square';o.frequency.setValueAtTime(freq,now);o.frequency.exponentialRampToValueAtTime(freq*.65,now+.13);g.gain.setValueAtTime(.05,now);g.gain.exponentialRampToValueAtTime(.001,now+.17);o.connect(g).connect(audioCtx.destination);o.start(now);o.stop(now+.18)}catch(e){}}
+function show(id){$(id).hidden=false;currentOverlay=id}
+function hide(id){$(id).hidden=true;if(currentOverlay===id)currentOverlay=null}
+function chooseRole(r){role=r;document.querySelectorAll('[data-role]').forEach(b=>b.classList.toggle('selected',b.dataset.role===r))}
+function startGame(){const name=$('student-name').value.trim().replace(/\s+/g,' '),klass=$('student-class').value;if(name.length<2){alertToast('Sila masukkan nama sebenar (sekurang-kurangnya 2 aksara).');return}player=db.profiles.find(p=>p.name.toLocaleLowerCase('ms')===name.toLocaleLowerCase('ms')&&p.klass===klass)||null;if(!player){player=mkPlayer(name,klass,role);db.profiles.push(player)}else{role=player.role}migratePlayer(player);hide('start-overlay');if(!player.enemyHp&&!player.dead)initEnemy();render();save();log('Sedia, '+player.name+'! Pilih TEMBAK, TAKTIKAL atau BENTENG.');if(player.dead){showDeath();return}alertToast('Selamat datang, '+player.name+'!');if(player.won)showWin()}
+function switchPlayer(){if(currentOverlay)return;player=null;db.activeId=null;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}$('student-name').value='';show('start-overlay')}
+function render(){if(!player)return;const ch=player.chapter,wi=worldIndex(ch),cls=CLASSES[player.role],qtot=QUESTIONS[ch-1].length;
+$('top-name').textContent=player.name;$('top-level').textContent='LV '+level();$('top-gold').textContent=player.gold+' K';$('top-xp').textContent=player.xp;
+$('chapter-name').textContent='BAB '+ch+' · '+CHAPTERS[ch-1];$('chapter-desc').textContent=isBoss(ch)?'♛ BOSS BATTLE · Selesaikan '+qtot+' cabaran':'Musuh: '+ENEMIES[ch-1][0]+' · '+qtot+' cabaran';$('quest-count').textContent=player.solved+'/'+QUESTION_TOTAL+' CABARAN';
+$('worlds').replaceChildren();WORLDS.forEach((w,i)=>{const complete=ch>w.to||player.won,active=wi===i&&!player.won;const item=document.createElement('div');item.className='world '+(complete?'complete':active?'active':'locked');item.innerHTML='<span class="world-icon">'+w.icon+'</span><div style="min-width:0"><div class="world-name pix">'+w.name+'</div><div class="world-sub">BAB '+w.from+'–'+w.to+'</div></div><span class="world-state">'+(complete?'✓ TAMAT':active?'▶ AKTIF':'🔒')+'</span>';$('worlds').appendChild(item)});
+$('scene-label').textContent=WORLDS[wi].tag.toUpperCase()+' · BAB '+ch;$('scene-round').textContent='CABARAN '+Math.min(player.round+1,qtot)+'/'+qtot+' · ☠ '+player.deaths;
+$('hero-label').textContent='⚔ '+cls.name;$('hero-hp-label').textContent=player.hp+' / '+maxHP()+' HP';$('hero-hp').style.width=clamp(100*player.hp/maxHP(),0,100)+'%';$('hero-mp').style.width=clamp(100*player.mp/maxMP(),0,100)+'%';$('hero-mp-label').textContent='MP '+player.mp+'/'+maxMP()+' · Zirah +'+player.armor;
+$('enemy-label').textContent=(isBoss(ch)?'♛ ':'☠ ')+ENEMIES[ch-1][0];$('enemy-hp-label').textContent=Math.max(0,player.enemyHp)+' / '+enemyMax()+' HP';$('enemy-hp').style.width=clamp(player.enemyHp/enemyMax()*100,0,100)+'%';$('enemy-note').textContent=isBoss(ch)?'Mutan boss menguji strategi skuad':'Gunakan taktik yang tepat untuk bertahan';
+$('quest-map').replaceChildren();CHAPTERS.forEach((n,i)=>{let el=document.createElement('div');el.className='quest '+(i+1<ch||player.won?'done':i+1===ch?'now':'')+(BOSSES.includes(i+1)?' boss':'');el.textContent=i+1;el.title='Bab '+(i+1)+' · '+n;$('quest-map').appendChild(el)});$('map-progress').textContent=(player.won?13:ch-1)+'/13';
+$('class-display').textContent=cls.name;$('potions-stock').textContent=player.potions;$('attack-level').textContent='+'+player.weapon;$('armor-level').textContent='+'+player.armor;$('stars-count').textContent=player.stars+' ★';$('skill-points-count').textContent=player.skillPoints;$('death-count').textContent=player.deaths+' ☠';$('quest-note').textContent='Bab '+ch+': '+CHAPTERS[ch-1]+'. Jawapan tepat meningkatkan penguasaan dan membantu menewaskan '+ENEMIES[ch-1][0]+'.';$('potion-label').textContent='Stok: '+player.potions+' · Pulih HP';
+$('attack-btn').disabled=player.won||player.dead;$('magic-btn').disabled=player.won||player.dead||player.mp<20;$('guard-btn').disabled=player.won||player.dead;$('potion-btn').disabled=player.won||player.dead||player.potions<1||player.hp>=maxHP();
+}
+function startAction(a){if(!player||player.won||player.dead||currentOverlay)return;if(a==='magic'&&player.mp<20){alertToast('MP tidak mencukupi. Gunakan BENTENG untuk tambah tenaga.');return}if(a==='potion'&&(player.potions<1||player.hp>=maxHP())){alertToast('Medkit hanya boleh digunakan apabila HP berkurang dan stok masih ada.');return}action=a;player.lastAction=a;hintOpen=false;save();const q=QUESTIONS[player.chapter-1][player.round];if(!q){alertToast('Bab ini sudah selesai.');return}$('question-badge').textContent='BAB '+player.chapter+' · '+(a==='magic'?'MOD TAKTIKAL':a==='guard'?'BENTENG LAPANGAN':a==='potion'?'MEDKIT PEMULIHAN':'TEMBAKAN SENJATA')+' · SOALAN '+(player.round+1)+'/'+QUESTIONS[player.chapter-1].length;$('question-title').textContent=CHAPTERS[player.chapter-1];$('question-context').textContent=q.t;$('question-text').textContent=q.e;$('answer-input').value='';$('answer-feedback').textContent='';$('hint-content').hidden=true;$('hint-content').textContent='';$('hint-btn').textContent='💡 PETUNJUK';show('question-overlay');playTone('click');if(!window.matchMedia('(pointer:coarse)').matches) setTimeout(()=>$('answer-input').focus(),80)}
+function showHint(){if(!player||currentOverlay!=='question-overlay')return;const q=QUESTIONS[player.chapter-1][player.round];if(hintOpen)return;hintOpen=true;player.hints++;$('hint-content').textContent='PETUNJUK: '+q.h;$('hint-content').hidden=false;$('hint-btn').textContent='✓ PETUNJUK DIBUKA';save()}
+function hurtPlayer(dmg,cinematic=false){
+ const mitigation=CLASSES[player.role].armor+player.armor*3+(player.skillGuard||0)*2+(player.defend?12+(player.role==='knight'?8:0)+(player.skillGuard||0)*7:0);
+ const actual=Math.max(3,dmg-mitigation);player.hp=clamp(player.hp-actual,0,maxHP());player.defend=false;
+ if(!cinematic){lastFX={type:'hurt',at:performance.now(),val:actual};playTone('bad')}
+ log(ENEMIES[player.chapter-1][0]+' menyerang! −'+actual+' HP.');
+ if(player.hp<=0){player.dead=true;player.deaths=(player.deaths||0)+1;player.failedStreak=0;save();if(!cinematic){hide('question-overlay');render();showDeath()}}
+ return actual;
+}
+// Animasi di kanvas tetap selamat walaupun pelajar meninggalkan tab: HP dan checkpoint disimpan sebelum visual bermula.
+function beginEnemyAttack(damage){
+ const enemy=ENEMIES[player.chapter-1][0];
+ const actual=hurtPlayer(damage,true);
+ lastFX=null;
+ hide('question-overlay');
+ currentOverlay='enemy-attack'; // Sekat tindakan lain sehingga animasi tamat.
+ enemyAttack={at:performance.now(),impactAt:790,duration:2160,damage:actual,hit:false,lethal:player.dead,enemy,chapter:player.chapter,round:player.round};
+ $('enemy-attack-title').textContent='☣ '+enemy.toUpperCase()+' MENYERANG!';
+ $('enemy-attack-status').textContent='ZOMBI MENGESAN KEHADIRAN SKUAD...';
+ $('enemy-attack-layer').hidden=false;
+ document.body.classList.add('enemy-animating');
+ save();
+ playTone('hit');
+}
+function finishEnemyAttack(){
+ const attack=enemyAttack;
+ if(!attack)return;
+ enemyAttack=null;
+ $('enemy-attack-layer').hidden=true;
+ document.body.classList.remove('enemy-animating');
+ currentOverlay=null;
+ if(attack.lethal||player.dead){render();showDeath();return}
+ $('answer-feedback').textContent='✕ SALAH! '+attack.enemy+' menyerang dan mengurangkan '+attack.damage+' HP. Baki '+player.hp+' HP. Cuba jawapan lain atau gunakan petunjuk.';
+ $('answer-input').value='';
+ show('question-overlay');
+ // Soalan, bab, jenis aksi dan petunjuk tidak diubah; murid kekal pada soalan yang sama.
+ setTimeout(()=>{if(currentOverlay==='question-overlay')$('answer-input').focus()},60);
+}
+
+function showDeath(){
+ $('death-checkpoint').textContent='BAB '+player.chapter+' · '+CHAPTERS[player.chapter-1]+' · SOALAN '+(player.round+1)+'/'+QUESTIONS[player.chapter-1].length;
+ $('death-total').textContent=player.deaths;
+ show('death-overlay');
+}
+function revivePlayer(){
+ if(!player||!player.dead||currentOverlay!=='death-overlay')return;
+ player.dead=false;player.hp=maxHP();player.mp=maxMP();player.failedStreak=0;player.defend=false;
+ player.enemyHp=Math.max(22,player.enemyHp||0);
+ const resume=player.lastAction==='magic'&&player.mp>=20?'magic':player.lastAction==='guard'?'guard':'attack';
+ hide('death-overlay');save();render();log('✦ Anggota diselamatkan! Bab '+player.chapter+', soalan '+(player.round+1)+' disambung.');playTone('heal');
+ startAction(resume);
+}
+function finishChapter(){const wasBoss=isBoss(player.chapter),finishedChapter=player.chapter;player.awards.push(finishedChapter);player.gold+=wasBoss?80:35;earnXP(wasBoss?230:140);player.hp=clamp(player.hp+35,0,maxHP());player.mp=clamp(player.mp+22,0,maxMP());player.potions+=wasBoss?1:0;
+if(finishedChapter===13){player.won=true;save();render();log('♛ Semua 13 bab lengkap. E-sijil kini tersedia!');playTone('win');setTimeout(showWin,550);return}
+player.chapter++;initEnemy();render();save();playTone('win');log((wasBoss?'♛ BOSS DITEWASKAN! ':'✓ BAB SELESAI! ')+ 'Bab '+finishedChapter+' berjaya. Bab '+player.chapter+' telah dibuka.');alertToast('★ Bab '+finishedChapter+' berjaya! +'+(wasBoss?230:140)+' XP, +'+(wasBoss?80:35)+' emas.');}
+function submitAnswer(e){
+ e.preventDefault();if(!player||player.dead||currentOverlay!=='question-overlay')return;
+ const q=QUESTIONS[player.chapter-1][player.round];if(!q)return;
+ const raw=$('answer-input').value.trim().replace(/[−–]/g,'-').replace(/,/g,'.').replace(/\s/g,'').replace(/°|cm²|cm2|cm|km\/j|kmh/gi,'');
+ if(!/^[+-]?\d+(\.\d+)?$/.test(raw)){$('answer-feedback').textContent='Masukkan jawapan dalam bentuk nombor sahaja.';return}
+ if(Math.abs(Number(raw)-q.a)>1e-8){
+  player.mistakes++;player.failedStreak=(player.failedStreak||0)+1;
+  const base=(isBoss(player.chapter)?32:24)+Math.floor((player.chapter-1)/3)*3+Math.min(18,(player.failedStreak-1)*5);
+  beginEnemyAttack(base);
+  return;
+ }
+ player.failedStreak=0;
+ const chosen=action;
+ const beforeHP=player.hp;
+ const healing=chosen==='potion'?Math.min((player.role==='mage'?85:55),maxHP()-player.hp):0;
+ const damage=chosen==='magic'?CLASSES[player.role].magic+player.weapon*6+(player.skillMagic||0)*19:
+              chosen==='guard'?36+player.weapon*4+(player.skillGuard||0)*5:
+              chosen==='potion'?0:CLASSES[player.role].base+player.weapon*9+(player.skillAttack||0)*12+(player.role==='ranger'?9:0);
+ if(chosen==='magic')player.mp-=20;
+ if(chosen==='guard'){player.defend=true;player.mp=clamp(player.mp+(player.role==='mage'?22:15),0,maxMP())}
+ if(chosen==='potion'){player.potions--;player.hp=clamp(player.hp+(player.role==='mage'?85:55),0,maxHP())}
+ player.enemyHp=Math.max(0,player.enemyHp-damage);
+ player.round++;player.solved++;player.gold+=5;earnXP(18);player.stars+=hintOpen?1:2;
+ const endOfChapter=player.round===QUESTIONS[player.chapter-1].length;
+ if(!endOfChapter&&player.enemyHp<=0)player.enemyHp=22;
+ save(); // Simpan jawapan betul sebelum sinematik supaya checkpoint selamat.
+ hide('question-overlay');render();
+ beginHeroAction(chosen,damage,healing,endOfChapter,q.ex,beforeHP);
+}
+function beginHeroAction(kind,damage,healing,endOfChapter,explanation,beforeHP){
+ if(heroAction||enemyAttack)return;
+ lastFX=null;
+ currentOverlay='hero-action';
+ heroAction={type:kind,at:performance.now(),duration:kind==='potion'?1920:2100,
+  impactAt:kind==='attack'?770:kind==='magic'?1010:kind==='guard'?890:850,
+  damage,healing,endOfChapter,explanation,chapter:player.chapter,hit:false,oldHP:beforeHP};
+ const names={attack:'⌁ TEMBAKAN TEPAT',magic:'⚡ ALAT TAKTIKAL',guard:'⛨ BENTENG AKTIF',potion:'✚ MEDKIT MEDAN'};
+ $('hero-action-title').textContent=names[kind]+' DIAKTIFKAN!';
+ $('hero-action-status').textContent=kind==='potion'?'RAWATAN KECEMASAN BERMULA...':kind==='guard'?'BENTENG ELEKTRONIK DIAKTIFKAN...':kind==='magic'?'KAPASITOR PERANTI DICAS...':'JUGGERNAUT BERSIAP MENEBAS...';
+ $('hero-action-layer').dataset.type=kind;
+ $('hero-action-layer').hidden=false;
+ document.body.classList.add('hero-animating');
+ playTone(kind==='magic'?'magic':kind==='potion'?'heal':'good');
+}
+function finishHeroAction(){
+ const scene=heroAction;
+ if(!scene)return;
+ heroAction=null;
+ $('hero-action-layer').hidden=true;
+ document.body.classList.remove('hero-animating');
+ currentOverlay=null;
+ if(scene.endOfChapter){finishChapter();return}
+ log('✓ Tepat! '+scene.explanation+' '+(scene.type==='potion'?'Medkit memulihkan '+scene.healing+' HP.':scene.type==='guard'?'Benteng menahan serangan dan memberi '+scene.damage+' damage.':'Serangan '+scene.damage+' damage.'));
+ render();save();
+ // Sambung kepada soalan seterusnya selepas animasi selesai.
+ const next=scene.type==='potion'?'attack':scene.type==='magic'&&player.mp<20?'attack':scene.type;
+ startAction(next);
+}
+function showShop(){if(!player||currentOverlay||player.dead)return;renderShop();show('shop-overlay')}
+function renderShop(){$('shop-gold').textContent=player.gold+' K';$('shop-skill-points').textContent=player.skillPoints;for(const kind of ['attack','magic','guard','vitality']){const field='skill'+kind[0].toUpperCase()+kind.slice(1),lvl=player[field]||0;$('skill-'+kind+'-level').textContent='Tahap '+lvl+'/5';const btn=document.querySelector('[data-skill="'+kind+'"]');btn.disabled=player.skillPoints<1||lvl>=5;btn.textContent=lvl>=5?'MAKSIMUM':'1 SP'}}
+function buy(item){if(!player)return;const costs={potion:30,weapon:60,armor:55},cost=costs[item];if(player.gold<cost){alertToast('Kredit tidak mencukupi. Selesaikan misi untuk mengumpul kredit.');return}player.gold-=cost;if(item==='potion')player.potions++;else if(item==='weapon')player.weapon++;else player.armor++;renderShop();render();save();playTone('heal');alertToast('Pembelian berjaya! +'+(item==='potion'?'1 medkit':item==='weapon'?'1 tahap senjata':'1 tahap armor'))}
+function buySkill(kind){if(!player||player.dead||currentOverlay!=='shop-overlay')return;const keys={attack:'skillAttack',magic:'skillMagic',guard:'skillGuard',vitality:'skillVitality'};const field=keys[kind];if(!field||player.skillPoints<1||player[field]>=5)return;player.skillPoints--;player[field]++;if(kind==='vitality')player.hp+=20;if(kind==='magic')player.mp+=5;save();renderShop();render();playTone('heal');alertToast('✦ Kemahiran '+kind+' meningkat ke tahap '+player[field]+'!')}
+function openMap(){if(!player||currentOverlay)return;const holder=$('map-details');holder.replaceChildren();CHAPTERS.forEach((ch,i)=>{const row=document.createElement('div');row.style.cssText='background:#ecd6ad;border:1px solid #ae8150;padding:7px;color:'+(i+1<player.chapter||player.won?'#a1eb77':i+1===player.chapter?'#ffce78':'#9cab9e');row.textContent=(i+1<player.chapter||player.won?'✓':i+1===player.chapter?'▶':'🔒')+' Bab '+(i+1)+': '+ch;holder.appendChild(row)});show('map-overlay')}
+function showWin(){if(!player?.won)return;$('win-title').textContent='TAHNIAH, '+player.name.toUpperCase()+'!';$('win-stars').textContent=player.stars+' ★';$('win-xp').textContent=player.xp;$('win-time').textContent=fmt(player.seconds);$('win-mistakes').textContent=player.mistakes;$('win-deaths').textContent=player.deaths||0;show('win-overlay')}
+// Seni pixel art dilukis terus menggunakan Canvas — tiada imej atau library luaran.
+const cv=$('battle-canvas'),ctx=cv.getContext('2d');ctx.imageSmoothingEnabled=false;
+const px=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),Math.max(1,Math.round(w)),Math.max(1,Math.round(h)))};
+function lineText(t,x,y,size=13,color='#fff',align='left'){ctx.fillStyle=color;ctx.font='bold '+size+'px Consolas,monospace';ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(t,x,y);ctx.textAlign='left'}
+function block(x,y,w,h,c,border='#080e1d',thick=4){px(x-thick,y-thick,w+thick*2,h+thick*2,border);px(x,y,w,h,c)}
+function crystal(x,y,color){px(x+7,y-14,14,12,'#fff8');px(x,y,29,42,color);px(x+7,y-12,15,13,color);px(x+7,y+9,7,18,'#ffffff68');px(x-7,y+32,44,7,'#131a36')}
+function tower(x,y,main='#252542',bright='#a0a0dc'){block(x,y,90,170,main,'#17152c',6);for(let n=0;n<4;n++){px(x+n*25-5,y-17,19,18,main)}for(let n=0;n<3;n++){px(x+19+n*19,y+30,11,24,bright);px(x+19+n*19,y+32,4,18,'#f8ebbe')}px(x+14,y+105,63,58,'#10152d');px(x+34,y+124,24,39,'#728b91')}
+function sceneEnvironment(now){
+ const wi=worldIndex(player?.chapter||1),pulse=.5+.5*Math.sin(now/170),scroll=Math.floor(now/180);
+ const skies=[['#213d3b','#46615b','#789187'],['#132b35','#294651','#436e72'],['#182625','#3c5442','#729073']][wi];
+ const grad=ctx.createLinearGradient(0,0,0,290);grad.addColorStop(0,skies[0]);grad.addColorStop(.65,skies[1]);grad.addColorStop(1,skies[2]);ctx.fillStyle=grad;ctx.fillRect(0,0,720,405);
+ // Cahaya luar samar dan grid pengimbas taktikal
+ for(let k=0;k<11;k++){const y=20+k*26;px(0,y,720,1,'#bde8ba0c')}
+ const fog=wi===2?'#d6ff9b12':'#b1ffcf0b';px(0,216,720,70,fog);
+ // Siluet bandar, terowong metro dan kompleks makmal mengikut operasi
+ if(wi===0){
+  for(const [x,w,h] of [[-20,85,160],[83,110,235],[200,76,186],[293,118,247],[423,104,186],[545,92,219],[641,110,173]]){
+   px(x,281-h,w,h,'#1c3435');px(x+5,281-h+8,w-11,7,'#385951');
+   for(let row=0;row<Math.floor(h/31);row++)for(let col=0;col<Math.floor(w/21);col++){if((row*7+col*11+x)%5!==0)px(x+11+col*21,300-h+row*27,7,12,(row+col)%6===0?'#b8d76d44':'#708d7955')}
+  }
+  px(345,65,13,107,'#243c3a');px(324,65,52,9,'#9bc79a');px(346,41,8,27,'#9bc79a');
+  // Lorong, papan amaran dan kenderaan terbiar
+  px(0,257,720,38,'#435f5a');px(0,282,720,9,'#8da09b');px(50,225,105,50,'#394b41');px(63,211,84,19,'#4b6355');px(70,229,34,13,'#b1d2bd55');px(112,229,31,13,'#b1d2bd55');for(const x of [72,133]){px(x,265,21,19,'#141f1f');px(x+5,269,11,11,'#65716e')}
+  px(570,219,97,66,'#53624e');px(581,209,68,13,'#76846a');px(586,229,45,18,'#becdb744');
+ }else if(wi===1){
+  px(0,0,720,285,'#182d36');for(let y=26;y<275;y+=34){px(0,y,720,3,'#3b545b');for(let x=(y%2)*51;x<720;x+=103)px(x,y+3,3,32,'#35535a')}
+  for(const x of [15,345,680]){px(x-21,0,42,280,'#405d61');px(x-27,24,54,12,'#688183');px(x-26,242,52,20,'#688183')}
+  px(205,61,313,188,'#0b1e28');px(220,74,284,168,'#24414c');for(let n=0;n<12;n++)px(230+n*22,86,2,144,'#668d8870');
+  px(250,120,213,88,'#506b67');px(260,132,190,46,'#142d33');px(280,178,9,39,'#9fbba5');px(424,178,9,39,'#9fbba5');
+  for(let i=0;i<4;i++){px(70+i*150,0,24,34,'#789da2');px(74+i*150,29,16,9,'#b9f1dd')}
+ }else{
+  for(let x=0;x<720;x+=44){px(x,22,41,253,'#2c4542');px(x+4,42,34,9,'#54776d');px(x+8,66,26,153,'#132d29')}
+  px(255,32,206,230,'#152b2b');px(270,51,176,195,'#356152');px(287,66,140,161,'#102a29');px(356,51,5,180,'#a8c1a355');for(let y=68;y<232;y+=37)px(292,y,128,3,'#4b897475');
+  // Bekas spesimen dan mesin kawalan
+  for(const x of [30,582]){px(x,86,105,165,'#4d6456');px(x+12,100,81,138,'#172e2e');px(x+19,109,67,120,'#417c6277');px(x+49,114,15,101,'#baff734d');px(x+23,104,59,9,'#d5f5b242')}
+  px(232,173,80,71,'#526755');px(246,187,51,24,'#101f22');px(254,190,33,12,'#cff58e');
+ }
+ // Lantai konkrit dan jubin industri
+ px(0,287,720,118,wi===1?'#293f43':'#3a4541');px(0,284,720,7,'#779080');
+ for(let y=301;y<407;y+=23){px(0,y,720,3,'#1727279c');for(let x=(y*3)%69-75;x<720;x+=90)px(x,y,3,25,'#17272788')}
+ for(let x=0;x<720;x+=42){px(x,371,17,6,'#dfac4b55')}
+ // Kanopi cahaya dan asap beranimasi
+ for(let i=0;i<18;i++){const x=(i*127+83)%720,y=(i*61-scroll)%266;px(x,y,2+(i%3),2+(i%2),'#ddf5b41f')}
+ for(const x of [80,640]){px(x-5,192,10,57,'#3d514a');px(x-15,187,29,12,'#728f69');px(x-9,174,18,15,iGlow(now)?'#d5fa81':'#aeca8e')}
+ // Lantai penempatan pertempuran
+ px(45,336,257,9,'#12201e');px(50,328,247,8,'#64796c');px(406,336,261,9,'#12201e');px(411,328,249,8,'#65796b');
+ lineText(['PERIMETER A-01','TRANSIT B-09','LAB OMEGA'][wi],355,19,13,'#d2f58b','center');
+}
+function iGlow(t){return Math.sin(t/220)>.12}
+
+function drawHero(t){
+ const p=player,klass=p?.role||'knight',colors=CLASSES[klass].colors,bob=Math.round(Math.sin(t/280)*2),x=176,y=282+bob;
+ px(x-42,319,86,9,'#081a1999');
+ // BUT DAN VEST TAKTIKAL — tiga siluet tersendiri
+ block(x-28,y+24,23,22,'#263d37','#0b2221',3);block(x+8,y+24,22,22,'#263d37','#0b2221',3);
+ px(x-30,y-75,62,100,colors[1]);px(x-29,y-69,59,66,colors[0]);px(x-23,y-59,46,42,'#30483f');
+ for(let j=0;j<3;j++)px(x-18+j*17,y-45,12,20,'#677c61');px(x-15,y-19,32,8,'#c3b87a');
+ px(x-44,y-66,16,52,colors[1]);px(x+28,y-66,16,52,colors[1]);
+ px(x-21,y-118,44,48, '#b78f79');px(x-25,y-130,52,24,colors[1]);px(x-33,y-125,65,13,'#263833');
+ px(x-15,y-105,34,11,'#172c2e');px(x-13,y-103,29,6,klass==='mage'?'#6ff5d3':'#bde778');
+ px(x-17,y-82,36,9,'#31443e');
+ if(klass==='knight'){
+  // Juggernaut: armor tebal dan mesingan berat
+  px(x-42,y-76,15,58,'#879889');px(x+29,y-76,15,58,'#879889');px(x-32,y-70,64,20,'#596a58');px(x-43,y-17,23,29,'#4e6152');
+  px(x+27,y-56,70,17,'#1a2628');px(x+74,y-52,45,8,'#73877b');px(x+97,y-55,25,4,'#c6cbb8');px(x+37,y-37,30,13,'#b0a96f');
+  px(x-24,y-137,48,9,'#8da287');
+ }else if(klass==='mage'){
+  // Technomedic: visor elektronik, ransel dan tablet pemancar
+  px(x-36,y-79,18,93,'#38615d');px(x-31,y-66,9,55,'#98e0d2');px(x-34,y-104,67,15,'#1c4a4b');px(x-29,y-101,57,8,'#78eee2');
+  px(x+25,y-51,49,40,'#183237');px(x+29,y-46,41,30,'#5bb8a9');px(x+32,y-39,34,18,'#aff3d0');px(x+40,y-35,17,7,'#1f5656');
+  px(x-15,y-50,29,30,'#f2f7ec');px(x-2,y-49,5,29,'#ba594e');px(x-14,y-38,29,6,'#ba594e');
+ }else{
+  // Ranger: topi operasi, rifle jauh dan sasaran skop
+  px(x-30,y-129,60,11,'#7e916e');px(x-10,y-141,30,12,'#536e54');px(x-36,y-64,16,44,'#506d54');px(x-22,y-56,39,10,'#b1ba89');
+  px(x+18,y-47,93,11,'#273a36');px(x+78,y-51,42,6,'#9eb9ad');px(x+32,y-55,22,7,'#a7dbb5');px(x+51,y-40,7,17,'#60755b');
+ }
+}
+
+function drawEnemy(t){
+ const ch=player?.chapter||1,type=ENEMIES[ch-1][1],boss=isBoss(ch),bob=Math.round(Math.sin(t/390+2)*3),x=526,y=290+bob;
+ px(x-80,321,164,12,'#0a1a1990');const skin=type==='omega'?'#9cbe77':type==='brute'?'#8ba18c':'#93aa92',dark='#293e39';
+ if(type==='omega'){
+  // Mutan Omega, kapsul penyelidikan pecah dan tentakel teknologi
+  for(let i=0;i<5;i++){const dx=(i-2)*28;px(x+dx*1.4,y-160-Math.cos(t/500+i)*8,19,113,'#568a63');px(x+dx*1.4,y-180,25,18,'#8bd7a0')}
+  block(x-79,y-158,158,169,'#567e63','#203733',9);px(x-48,y-190,96,57,'#9dc385');px(x-70,y-199,42,30,'#5d8967');px(x+29,y-199,44,30,'#5d8967');
+  px(x-37,y-143,31,17,'#f9b879');px(x+10,y-143,31,17,'#f9b879');px(x-18,y-85,36,19,'#233932');px(x-5,y-74,10,16,'#cbe5bc');
+  px(x-105,y-117,28,109,'#436b57');px(x+76,y-117,28,109,'#436b57');px(x-57,y+10,37,23,'#365c48');px(x+21,y+10,37,23,'#365c48');
+  for(let i=0;i<7;i++){const a=t/700+i*1.47;px(x+Math.cos(a)*121,y-115+Math.sin(a)*65,8,8,'#d2ff8c')}
+ }else if(type==='brute'){
+  block(x-66,y-130,134,137,'#6b9276','#263d39',7);px(x-49,y-169,95,47,'#90af8b');px(x-82,y-114,24,118,'#64836b');px(x+61,y-114,24,118,'#64836b');
+  px(x-35,y-127,23,13,'#ffb278');px(x+12,y-127,23,13,'#ffb278');px(x-27,y-78,54,12,'#31443a');px(x-42,y+6,40,24,'#4e7560');px(x+9,y+6,40,24,'#4e7560');
+  for(let i=0;i<5;i++)px(x-48+i*23,y-75+(i%2)*12,12,6,'#acc895');
+ }else if(type==='runner'||type==='crawler'){
+  const run=type==='runner'?Math.sin(t/160)*9:0;
+  px(x-42,y-128+run,83,49,skin);px(x-48,y-90+run,92,78,'#5b796c');px(x-27,y-115+run,16,12,'#f8ad73');px(x+13,y-115+run,16,12,'#f8ad73');
+  px(x-53,y-55+run,19,55,'#7d9782');px(x+34,y-55+run,19,55,'#7d9782');px(x-29,y+3+run,21,25,'#344c41');px(x+8,y+3+run,21,25,'#344c41');
+  if(type==='crawler'){px(x-69,y-10,37,18,'#638672');px(x+36,y-10,38,18,'#638672');px(x-43,y-49,87,20,'#314e41')}
+ }else if(type==='armored'){
+  block(x-53,y-115,108,118,'#506765','#1f3837',5);px(x-42,y-151,85,49,'#829b81');px(x-37,y-155,74,18,'#4b605c');px(x-25,y-129,53,14,'#ffae6c');
+  px(x-65,y-99,25,83,'#a3a996');px(x+42,y-99,25,83,'#a3a996');px(x-38,y-61,78,20,'#a7b29b');px(x-42,y+1,35,27,'#374b45');px(x+7,y+1,35,27,'#374b45');
+ }else if(type==='spitter'){
+  px(x-57,y-98,112,99,'#476a5c');px(x-45,y-142,91,59,skin);px(x-27,y-120,16,11,'#dfff81');px(x+11,y-120,16,11,'#dfff81');
+  px(x-14,y-79,34,21,'#2c554a');px(x-54,y-78,25,63,'#71937b');px(x+31,y-78,25,63,'#71937b');for(let i=0;i<8;i++){px(x-32+i*11,y-155-i%3*8,7,8,'#a4c57d')}for(let i=0;i<4;i++){px(x+48+i*12,y-100-i*7,6,6,'#cff37588')}
+ }else{
+  // Walker berkot lab/seragam kelabu
+  block(x-42,y-102,86,111,'#586f64','#1a3333',5);px(x-32,y-145,65,48,skin);px(x-23,y-124,17,10,'#e4ac78');px(x+11,y-124,17,10,'#e4ac78');px(x-39,y-72,20,65,'#a1b6a4');px(x+21,y-72,20,65,'#a1b6a4');px(x-34,y+4,29,23,'#374f45');px(x+5,y+4,29,23,'#374f45');
+  px(x-27,y-56,54,15,'#35453c');px(x-6,y-38,22,8,'#b8ceae');
+ }
+ if(!boss){for(let i=0;i<3;i++)px(x+70+i*10,y-168+i*12,3,3,'#dbf18388')}
+}
+
+function drawParticles(now){if(!lastFX)return;const dt=now-lastFX.at;if(dt>620){lastFX=null;return}const pct=1-dt/620,x=lastFX.type==='heal'?176:lastFX.type==='hurt'?174:525,y=lastFX.type==='heal'?177:lastFX.type==='hurt'?180:186;const col=lastFX.type==='heal'?'#9effc4':lastFX.type==='hurt'?'#ff8197':lastFX.type==='spell'?'#d0a0ff':'#f9d08a';for(let i=0;i<11;i++){let ang=i*.57+dt*.009,r=(1-pct)*76;px(x+Math.cos(ang)*r,y+Math.sin(ang)*r,9*pct+2,9*pct+2,col)}lineText((lastFX.type==='hurt'?'-':'+')+lastFX.val,x,Math.round(y-70*(1-pct)),25,col,'center')}
+function smoothStep(p){p=clamp(p,0,1);return p*p*(3-2*p)}
+function drawIncomingBlow(t,attack,elapsed){
+ const dt=elapsed-attack.impactAt;
+ if(dt<0||dt>650)return;
+ const k=clamp(dt/650,0,1),fade=1-k,x=211,y=198;
+ ctx.save();ctx.globalAlpha=fade;
+ // Dua bilah sabetan terang bersilang pada hero, serta percikan piksel.
+ ctx.lineCap='square';
+ for(const [dx,dy,stroke,width] of [[-63,-61,'#fff2c0',11],[-53,58,'#f27883',10]]){
+  ctx.beginPath();ctx.moveTo(x+dx,y+dy);ctx.lineTo(x-dx*.4,y-dy*.43);ctx.strokeStyle=stroke;ctx.lineWidth=width*(1-.45*k);ctx.stroke();
+ }
+ for(let i=0;i<22;i++){const ang=i*Math.PI*2/22+1.3,dist=14+92*k+(i%3)*5;px(x+Math.cos(ang)*dist,y+Math.sin(ang)*dist,Math.max(2,10*(1-k)),Math.max(2,8*(1-k)),i%3?'#ffb67c':'#fff2bb')}
+ ctx.restore();
+ if(dt<210)px(0,0,720,405,dt<65?'#ffd1bc48':'#e62b4440');
+ lineText('−'+attack.damage+' HP',206,clamp(121-dt*.075,58,121),Math.round(34-9*k),'#ffd1bf','center');
+ if(attack.lethal&&dt>350)lineText('HP 0 · ANGGOTA TEWAS!',360,95,22,'#ffe7b8','center');
+}
+function drawHeroActionEffects(now,scene,elapsed){
+ const type=scene.type,dt=elapsed-scene.impactAt;ctx.save();
+ if(type==='attack'){
+  // Tembakan dengan kilat muncung dan tracer ke sasaran
+  if(elapsed>380&&elapsed<1600){const k=clamp((elapsed-380)/420,0,1),x=272+(524-272)*k;
+   px(x-5,180,31,5,'#fff4c0');px(x-9,182,37,2,'#f4ba67');px(272,172,22,22,'#ffc56c');px(278,167,10,31,'#fff9d3');
+   if(dt>=0&&dt<550){for(let i=0;i<18;i++){let a=i*2.399,r=25+80*clamp(dt/550,0,1);px(523+Math.cos(a)*r,181+Math.sin(a)*r,7,7,i%3?'#ffe1a1':'#f28c64')}}
+  }
+ }else if(type==='magic'){
+  // Mod taktikal: plasma elektrik / drone EMP
+  for(let i=0;i<13&&elapsed<1000;i++){const a=i*.48+elapsed*.007,r=28+18*Math.sin(elapsed/120);px(267+Math.cos(a)*r,182+Math.sin(a)*r,5,5,'#8af4ef')}
+  if(elapsed>560&&elapsed<1570){const pos=smoothStep((elapsed-560)/570),x=273+250*pos;px(x-10,165,29,29,'#79e9e5');px(x-3,173,16,16,'#effffc');for(let j=0;j<7;j++)px(x-13-j*14,181+j%2*4,9,7,'#83bdf1')}
+  if(dt>=0&&dt<560){ctx.globalAlpha=1-dt/560;ctx.beginPath();ctx.arc(526,184,33+110*dt/560,0,Math.PI*2);ctx.strokeStyle='#6df6e6';ctx.lineWidth=12;ctx.stroke();for(let k=0;k<8;k++)px(495+k*11,135+k%2*41,8,23,'#d7fffa')}
+ }else if(type==='guard'){
+  ctx.globalAlpha=elapsed>1700?clamp((2000-elapsed)/300,0,1):1;
+  ctx.fillStyle='#3eb4ac55';ctx.strokeStyle='#9af7ce';ctx.lineWidth=7;ctx.beginPath();ctx.roundRect(197,115,102,158,20);ctx.fill();ctx.stroke();
+  for(let i=0;i<6;i++)px(206+(i%3)*27,135+Math.floor(i/3)*92,17,5,'#d8fff0');
+  if(elapsed>750&&elapsed<1530){let p=clamp((elapsed-750)/550,0,1);px(285+220*p,178,33,14,'#b3fbe9');px(288+220*p,168,14,34,'#ddfff7')}
+ }else if(type==='potion'){
+  const raising=clamp(elapsed/580,0,1),vx=206,vy=228-55*raising;
+  px(vx-12,vy-18,24,31,'#f1f6ee');px(vx-8,vy-12,16,21,'#64ddab');px(vx-6,vy-4,12,4,'#e9fff8');
+  for(let i=0;i<23;i++){const ang=i*2.39+elapsed*.005,r=30+(i%5)*11+elapsed/48;ctx.globalAlpha=clamp((elapsed-220)/330,0,1)*clamp((1900-elapsed)/300,0,1);px(176+Math.cos(ang)*r,205+Math.sin(ang)*r*.67,7,7,i%3?'#9af7b5':'#f5ffdb')}
+  ctx.globalAlpha=.8;px(172,135,9,73,'#bcffd1');px(141,168,72,10,'#bcffd1');
+ }
+ ctx.restore();
+ if(dt>=0&&dt<650){const p=dt/650,label=type==='potion'?'+'+scene.healing+' HP':type==='guard'?'+'+scene.damage+' TAHAN':'−'+scene.damage+' HP';lineText(label,type==='potion'?178:type==='guard'?275:523,Math.max(89,144-55*p),26,type==='potion'?'#aaffcc':type==='guard'?'#aaffde':type==='magic'?'#bbfffc':'#ffe6b2','center')}
+}
+
+function drawHeroCinematic(now,scene,elapsed){
+ const type=scene.type,dt=elapsed-scene.impactAt;
+ let move=0,recoil=0,shakeX=0,shakeY=0;
+ if(type==='attack'){
+  move=elapsed<350?-Math.round(10*smoothStep(elapsed/350)):elapsed<1200?-10:elapsed<1750?-10+Math.round(10*smoothStep((elapsed-1200)/550)):0;
+  recoil=dt>=0&&dt<500?Math.round(25*(1-smoothStep(dt/500))):0;
+ }else if(type==='magic'){
+  recoil=dt>=0&&dt<540?Math.round(22*(1-smoothStep(dt/540))):0;
+ }else if(type==='guard'){
+  move=elapsed<650?Math.round(29*smoothStep(elapsed/650)):elapsed<1500?29:29-Math.round(29*smoothStep((elapsed-1500)/510));
+  recoil=dt>=0&&dt<530?Math.round(25*(1-smoothStep(dt/530))):0;
+ }
+ if(dt>=0&&dt<310){shakeX=Math.round(Math.sin(dt*.24)*6*(1-dt/310));shakeY=Math.round(Math.cos(dt*.2)*4*(1-dt/310))}
+ ctx.save();ctx.translate(shakeX,shakeY);sceneEnvironment(now);
+ ctx.save();ctx.translate(move,0);drawHero(now);ctx.restore();
+ ctx.save();ctx.translate(recoil,0);drawEnemy(now);ctx.restore();
+ drawHeroActionEffects(now,scene,elapsed);
+ ctx.restore();
+ lineText(type==='potion'?'MEDKIT MEMULIHKAN HP':type==='guard'?'BENTENG MELINDUNGI ANGGOTA':type==='magic'?'MOD TAKTIKAL MENEMBAK ZOMBI':'SKUAD MELANCAR TEMBAKAN',360,382,13,type==='magic'?'#e1c8ff':'#fff0bf','center');
+}
+function animate(now){
+ tick=now;ctx.clearRect(0,0,720,405);
+ if(enemyAttack&&player){
+  const a=enemyAttack,elapsed=Math.max(0,now-a.at);
+  if(elapsed>=a.impactAt&&!a.hit){
+   a.hit=true;render();lastFX={type:'hurt',at:now,val:a.damage};playTone('bad');
+   $('enemy-attack-status').textContent='−'+a.damage+' HP • '+(a.lethal?'HP HABIS — ANGGOTA TEWAS!':'BAKI '+player.hp+' HP');
+  }
+  const approach=elapsed<210?-Math.round(19*smoothStep(elapsed/210)):
+                 elapsed<790?-19-Math.round(228*smoothStep((elapsed-210)/580)):
+                 elapsed<1190?-247:
+                 elapsed<1790?-247+Math.round(247*smoothStep((elapsed-1190)/600)):0;
+  const recoil=elapsed<790?0:elapsed<1150?-Math.round(20*Math.sin(Math.PI*smoothStep((elapsed-790)/360)/2)):
+               elapsed<1650?-Math.round(20*(1-smoothStep((elapsed-1150)/500))):0;
+  const impactElapsed=elapsed-a.impactAt;
+  const shaking=impactElapsed>=0&&impactElapsed<340;
+  const shakeX=shaking?Math.round(Math.sin(impactElapsed*.26)*7*(1-impactElapsed/340)):0;
+  const shakeY=shaking?Math.round(Math.cos(impactElapsed*.21)*5*(1-impactElapsed/340)):0;
+  ctx.save();ctx.translate(shakeX,shakeY);
+  sceneEnvironment(now);
+  ctx.save();ctx.translate(recoil,0);drawHero(now);ctx.restore();
+  ctx.save();ctx.translate(approach,0);drawEnemy(now);ctx.restore();
+  drawIncomingBlow(now,a,elapsed);
+  ctx.restore();
+  lineText('PERTAHANAN KOTA BERLANGSUNG...',360,383,14,'#ffe1a4','center');
+  if(elapsed>=a.duration)finishEnemyAttack();
+ }else if(heroAction&&player){
+  const a=heroAction,elapsed=Math.max(0,now-a.at);
+  if(elapsed>=a.impactAt&&!a.hit){
+   a.hit=true;
+   $('hero-action-status').textContent=a.type==='potion'?'+'+a.healing+' HP • NYAWA DIPULIHKAN':
+     a.type==='guard'?'BENTENG AKTIF • '+a.damage+' KEROSAKAN':
+     a.type==='magic'?'SKILL TAKTIKAL MENGENAI ZOMBI • −'+a.damage+' HP':'TEMBAKAN MENGENAI ZOMBI • −'+a.damage+' HP';
+   playTone(a.type==='potion'?'heal':a.type==='magic'?'magic':'hit');
+  }
+  drawHeroCinematic(now,a,elapsed);
+  if(elapsed>=a.duration)finishHeroAction();
+ }else{
+  sceneEnvironment(now);
+  if(player){drawHero(now);drawEnemy(now);drawParticles(now);lineText('LV '+level(),177,365,14,'#d7f794','center');lineText(isBoss(player.chapter)?'♛ BOSS':'ENEMY',526,365,14,'#ffe4aa','center')}
+ }
+ requestAnimationFrame(animate);
+}
+// E-sijil PNG dijana terus daripada Canvas; fail tidak memerlukan aplikasi atau server luaran.
+function makeCertificate(){
+ if(!player?.won){alertToast('Selesaikan semua bab sebelum memuat turun e-sijil.');return}
+ const cvs=document.createElement('canvas');cvs.width=1800;cvs.height=1273;const c=cvs.getContext('2d'),W=cvs.width,H=cvs.height;
+ const box=(x,y,w,h,color)=>{c.fillStyle=color;c.fillRect(x,y,w,h)};
+ const text=(str,x,y,size,color='#20302c',font='Arial,sans-serif',align='center',weight='normal')=>{c.textBaseline='middle';c.textAlign=align;c.fillStyle=color;c.font=weight+' '+size+'px '+font;c.fillText(str,x,y)};
+ const stroke=(x1,y1,x2,y2,color='#a3b875',width=2)=>{c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke()};
+ // Kertas operasi berlapis — citra taktik, kod biohazard dan bingkai holografik
+ const bg=c.createLinearGradient(0,0,1800,1273);bg.addColorStop(0,'#0c1c1e');bg.addColorStop(.6,'#1c3333');bg.addColorStop(1,'#071518');box(0,0,W,H,bg);
+ for(let i=0;i<32;i++){box(i*65-20,0,17,H,i%2?'#bbdb9b06':'#ffe8a706')}
+ box(27,28,1746,1217,'#ddedc9');box(38,39,1724,1195,'#283c3a');box(52,53,1696,1167,'#f2f0dd');box(69,69,1662,1135,'#e2e8d8');
+ // bintik radar berselang-seli dan jalur hazard
+ for(let y=105;y<1180;y+=35)for(let x=91;x<1710;x+=35){if((x+y)%3===0)box(x,y,3,3,'#b5c9b133')}
+ for(let i=0;i<48;i++){box(73+i*35,72,18,11,i%2?'#273b32':'#eeaf54');box(73+i*35,1187,18,11,i%2?'#273b32':'#eeaf54')}
+ box(96,106,1608,173,'#172d2d');box(109,118,1582,146,'#1c3938');
+ text('UNIT PERTAHANAN KOTA  /  OUTBREAK RESPONSE DIVISION',900,151,20,'#b3cdbb','Arial,sans-serif','center','bold');
+ text('P R O T O K O L    Z',900,209,62,'#d0f28d','Arial,sans-serif','center','bold');
+ text('O P E R A S I   F A J A R',900,247,23,'#e7d4a5','Arial,sans-serif','center','bold');
+ // Simbol biohazard dibina sebagai bentuk grafik, tidak bergantung kepada emoji
+ c.save();c.translate(900,343);c.strokeStyle='#648d74';c.lineWidth=12;for(let i=0;i<3;i++){c.save();c.rotate(i*Math.PI*2/3);c.beginPath();c.arc(0,-37,42,-2.4,.9);c.stroke();c.restore()}c.fillStyle='#527b66';c.beginPath();c.arc(0,0,18,0,Math.PI*2);c.fill();c.restore();
+ text('SIJIL PENCAPAIAN OPERASI',900,433,56,'#1b3434','Georgia,serif','center','bold');
+ stroke(242,468,1558,468,'#9cb283',4);
+ text('Dengan ini diperakui bahawa',900,526,28,'#516b5e');
+ const name=player.name.toUpperCase();let size=61;c.font='bold '+size+'px Georgia,serif';while(c.measureText(name).width>1320&&size>30){size--;c.font='bold '+size+'px Georgia,serif'}
+ text(name,900,607,size,'#1f4040','Georgia,serif','center','bold');stroke(288,653,1512,653,'#b4bf96',3);
+ text('berjaya menyelamatkan formula penawar dan menamatkan 29 misi Matematik',900,711,27,'#41574d');
+ text('Tingkatan 1 merentas 13 bab, 3 zon kuarantin dan 3 ketua mutan.',900,746,27,'#41574d');
+ box(540,791,720,59,'#213c38');text('★  STATUS: '+((player.deaths||0)===0?'SURVIVOR ELITE':(player.deaths||0)<=2?'SURVIVOR VETERAN':'SURVIVOR RESILIENT')+'  ★',900,820,29,'#d8f6a0','Arial,sans-serif','center','bold');
+ const items=[['KELAS',player.klass],['BINTANG',String(player.stars)+' ★'],['XP',String(player.xp)],['MASA',fmt(player.seconds)],['KALI MATI',String(player.deaths||0)]];
+ const sz=258, start=193;items.forEach((m,i)=>{let x=start+i*283;box(x,886,sz,105,'#f8f9ed');c.strokeStyle='#a8bb9d';c.lineWidth=3;c.strokeRect(x,886,sz,105);text(m[0],x+sz/2,919,18,'#658273','Arial,sans-serif','center','bold');text(m[1],x+sz/2,962,28,'#243d3a','Arial,sans-serif','center','bold')});
+ // Signature block — sign-off guru sekolah, bukan placeholder
+ text('Rauzhanfikri',239,1049,55,'#284b57','"Brush Script MT", "Segoe Script", cursive','left','italic bold');
+ stroke(235,1070,657,1070,'#7c9b91',2);
+ text('MUHAMMAD RAUZHANFIKRI BIN MD NAZREE',235,1097,20,'#273e39','Arial,sans-serif','left','bold');
+ text('Guru Matematik Tingkatan 1',235,1130,20,'#485b53','Arial,sans-serif','left');
+ text('SMK Tunku Putra',235,1160,20,'#485b53','Arial,sans-serif','left');
+ // digital mission verification stamp, explicitly for this educational game
+ c.save();c.translate(1435,1076);c.rotate(-.11);c.strokeStyle='#718b69';c.lineWidth=7;c.strokeRect(-157,-57,314,113);text('MISI LENGKAP',0,-18,25,'#537359','Arial,sans-serif','center','bold');text('13 / 13 BAB',0,18,21,'#537359','Arial,sans-serif','center','bold');c.restore();
+ text('NO. SIJIL : PZ-'+String(player.created).slice(-8),1683,1120,17,'#627b6d','Arial,sans-serif','right','bold');
+ text(new Date().toLocaleDateString('ms-MY',{day:'numeric',month:'long',year:'numeric'}),1683,1155,18,'#627b6d','Arial,sans-serif','right');
+ cvs.toBlob(blob=>{if(!blob){alertToast('Sijil PNG gagal dijana. Cuba browser lain.');return}const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='E-Sijil_Protokol_Z_T1_'+player.name.replace(/[^a-zA-Z0-9\s-]/g,'').trim().replace(/\s+/g,'_')+'.png';document.body.appendChild(link);link.click();setTimeout(()=>{URL.revokeObjectURL(url);link.remove()},2000);player.certificateDownloaded=true;save();alertToast('E-sijil PNG berjaya dijana. Hantarkan melalui Google Form PdPR.');},'image/png');
+}
+
+// Tetapan interaksi
+$('class-choices').addEventListener('click',e=>{const b=e.target.closest('[data-role]');if(b)chooseRole(b.dataset.role)});$('start-btn').onclick=startGame;$('student-name').onkeydown=e=>{if(e.key==='Enter')startGame()};$('switch-btn').onclick=switchPlayer;$('sound-btn').onclick=()=>{audioOn=!audioOn;$('sound-btn').textContent=audioOn?'♫ ON':'♫ OFF';if(audioOn)playTone('click')};
+$('attack-btn').onclick=()=>startAction('attack');$('magic-btn').onclick=()=>startAction('magic');$('guard-btn').onclick=()=>startAction('guard');$('potion-btn').onclick=()=>startAction('potion');
+$('answer-form').addEventListener('submit',submitAnswer);$('hint-btn').onclick=showHint;$('cancel-question').onclick=()=>hide('question-overlay');
+$('shop-btn').onclick=showShop;$('mobile-shop').onclick=showShop;$('close-shop').onclick=()=>hide('shop-overlay');document.querySelector('.shop-items').addEventListener('click',e=>{const b=e.target.closest('[data-item]');if(b)buy(b.dataset.item)});document.querySelector('.skill-items').addEventListener('click',e=>{const b=e.target.closest('[data-skill]');if(b)buySkill(b.dataset.skill)});$('revive-btn').onclick=revivePlayer;
+$('map-btn').onclick=openMap;$('mobile-map').onclick=openMap;$('close-map').onclick=()=>hide('map-overlay');$('close-win').onclick=()=>hide('win-overlay');$('download-cert').onclick=makeCertificate;
+setInterval(()=>{if(player&&!player.won&&!currentOverlay){player.seconds++;if(player.seconds%5===0)save()}},1000);window.addEventListener('beforeunload',()=>save());
+// Jangan mula game tanpa log masuk, tetapi ingat nama murid terakhir untuk mudah sambung.
+const saved=db.profiles.find(p=>p.id===db.activeId);if(saved){$('student-name').value=saved.name;$('student-class').value=saved.klass;chooseRole(saved.role)}requestAnimationFrame(animate);
+})();
+
+// Mobile: laraskan dialog mengikut ruang sebenar apabila papan kekunci maya muncul.
+(function setupPhoneKeyboard(){
+ const vv=window.visualViewport;
+ if(!vv)return;
+ const update=()=>{
+  const focused=document.activeElement;
+  const typing=focused&&['INPUT','TEXTAREA','SELECT'].includes(focused.tagName);
+  const keyboard=typing&&(window.innerHeight-vv.height>110);
+  document.body.classList.toggle('keyboard-visible',Boolean(keyboard));
+  document.documentElement.style.setProperty('--mobile-visual-height',vv.height+'px');
+  document.documentElement.style.setProperty('--mobile-visual-top',vv.offsetTop+'px');
+  if(keyboard&&focused){
+   const dialog=focused.closest('.dialog');
+   if(dialog){
+    const r=focused.getBoundingClientRect(), visibleBottom=vv.offsetTop+vv.height;
+    if(r.bottom>visibleBottom-12)dialog.scrollTop+=r.bottom-(visibleBottom-12);
+   }
+  }
+ };
+ vv.addEventListener('resize',update,{passive:true});
+ vv.addEventListener('scroll',update,{passive:true});
+ document.addEventListener('focusin',()=>requestAnimationFrame(update));
+ document.addEventListener('focusout',()=>setTimeout(update,140));
+})();
+
+</script></body></html>
